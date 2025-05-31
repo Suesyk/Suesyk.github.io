@@ -5,6 +5,25 @@
   
   <entry>
     <title>Hello World</title>
+    <link href="/2025/05/31/hello/"/>
+    <url>/2025/05/31/hello/</url>
+    
+    <content type="html"><![CDATA[<p>你好！！！</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>start</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
     <link href="/2025/05/31/hello-world/"/>
     <url>/2025/05/31/hello-world/</url>
     
