@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>example</title>
+    <link href="/2025/10/10/example/"/>
+    <url>/2025/10/10/example/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="ffdc62c572180fef9a0c48b453fe5068a7b3dd21a0388cf176ada6f0df96cf30">45d98d5a61740f879568c2b9f9381bfcbdf54405db40c2d9047f7f4fe9167ac12083615603ed688ba7975e2b36761c9b</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>分类1 - 分类2</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>标签</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello</title>
     <link href="/2025/05/31/hello%20word/"/>
     <url>/2025/05/31/hello%20word/</url>
