@@ -42,7 +42,6 @@
 <meta property="og:image" content="http://example.com/img/plane/image15.png">
 <meta property="og:image" content="http://example.com/img/plane/image16.png">
 <meta property="og:image" content="http://example.com/img/plane/image18.png">
-<meta property="og:image" content="http://example.com/img/plane/image18.png">
 <meta property="og:image" content="http://example.com/img/plane/image19.png">
 <meta property="og:image" content="http://example.com/img/plane/image20.png">
 <meta property="og:image" content="http://example.com/img/plane/image21.png">
@@ -74,7 +73,7 @@
 <meta property="og:image" content="http://example.com/img/plane/image87.png">
 <meta property="og:image" content="http://example.com/img/plane/image100.png">
 <meta property="article:published_time" content="2025-07-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-07T15:08:33.338Z">
+<meta property="article:modified_time" content="2025-07-07T15:27:19.529Z">
 <meta property="article:author" content="Sue Yukai">
 <meta property="article:tag" content="竞赛论文">
 <meta name="twitter:card" content="summary_large_image">
@@ -429,16 +428,13 @@ alt="图2.2 2020-2025年环境监测产品营收" />
 </figure>
 <h2 id="设计方案"><strong>2.4 设计方案</strong></h2>
 <p>    本项目水陆空全方位立体式环境监测系统主要由水陆空三栖无人机、自动寻光式光伏板无线充电地面中继站平台、智能数据算法构架、多终端融合可视化及控制平台四个部分组成。</p>
-<p><img src="/img/plane/image7.png" srcset="/img/loading.gif" lazyload alt="图2.5 硬件部分组成图" style="width: 60%; max-width: 500px; height: auto; display: block; margin: 0 auto;"></p>
+<p><img src="/img/plane/image7.png" srcset="/img/loading.gif" lazyload alt="图2.5 硬件部分组成图" style="width: 70%; max-width: 600px;"></p>
 <p>    无人机硬件部分由STM32和DJINAZA组成，控制着水质监测模块、大气监测模块、通信模块、无人机控制模块四个部分。其中水质监测模块实现了对水质的浊度、温度的实时监测；大气监测模块实现了对大气的PM2.5、二氧化碳、温度等指标的实时监测；通信模块实现了功能控制模块所采集的数据与地面站之间的实时数据传输；飞行控制模块实现了无人机稳定安全运动，并且能够自由的在空中飞行、水面起降和水面滑行三种模式之间切换。</p>
 <p>    自动寻光式光伏板无线充电地面中继站平台搭载了起降平台，同时机载计算机为树莓派3B+，通过树莓派搭建
 OpenCV环境，运行计算机视觉相关的代码，读取处理”三目摄像头”搜集的信息，然后计算出无人机的空间坐标位置。最后实现树莓派和&amp;龙&amp;芯1c主控板之间的串口。通过主控板控制树莓派的运行，读取树莓派传输的数据。对其位置做出调整。</p>
 <p>    电机模块集成了电机及其控制电路，旨在实现龙芯1c主控板对大功率电机的小信号控制功能。该模块通过驱动大功率电机，确保无人机回收舱系统关键活动单元的高效运作，进而保障无人机的稳定性能。</p>
 <p>通过实施全面的水天一体化监测系统，我们能够有效识别和定位污染源，为环境保护和治理提供有力的数据支持和指导，这正是将绿水青山转化为金山银山理念落到实处的生动例证。</p>
-<div style="text-align: center;">
-<p><img src="/img/plane/image8.png" srcset="/img/loading.gif" lazyload alt="图2.6 软件部分组成图" 
-       style="width: 65%; max-width: 550px; height: auto; border: 1px solid #eee; padding: 8px;"></p>
-</div>
+<p><img src="/img/plane/image8.png" srcset="/img/loading.gif" lazyload alt="图2.6 软件部分组成图" style="width: 70%; max-width: 600px;"></p>
 <p>    软件系统由三个主要部分构成：上位机、网页端以及移动应用程序（APP)。上位机采用PyQt5进行开发，网页端则基于JavaScript构建，而移动应用程序则是利用Java开发的。这三种平台均能展示采集的数据，为用户提供便捷的途径，以实时查看监测结果。</p>
 <p>    软件将无人机采集到的数据进行可视化处理并实时显示，使环境监测数据的可读性强，极大程度上提高了用户体验；将采集到的数据结合无人机的位置信息,利用图论进行数学建模，并使用机器学习中的KNN和岭回归算法进行预测；采用Scrapy爬虫爬取谷歌地图并呈现，清楚的呈现环境监测系统所监控区域；使用C#语言进行无人机控制的上位机开发，实现了安全、有效地控制。当无人机在无线电信号接收范围内，操作者在系统运行稳定后进行C#语言编程，让无人机飞行至指定区域采集pm2.5、温度、CO2等样本，然后对传感器打开进行信号接收并转化为数据检测，最终结果由电脑记录，当电脑显示数据接收成功时可操纵其返回；返回后及时处理信息，则可命令其反复几次进行阶段性数据检测，或者到不同区域进行检测，以达到其对环境进行检测的目的，预防和治理环境。本文设计的无人机环境监测系统可充分为社会利用，为环境监测工作人员提供方便，实时监测环境，为大众提前进行天气及恶劣环境的预警，有利于大众的社会生活，也有利于全社会的文明绿色经济发展。</p>
 <figure>
@@ -504,9 +500,7 @@ src="/img/plane/image17.png" srcset="/img/loading.gif" lazyload alt="图2.14 通
 水陆空三栖无人机结构设计</strong></h4>
 <p>    水陆空三栖无人机在整体机械机构上，采用高强度轻质材料，如玻纤、玻纤维、改性塑料、改性PVC、树脂、铝合金等。无人机所有的设备都是以模块化形式安装在机架机身上面，所以优秀的机架设计可以让其他各个元器件安装合理,坚固稳定，拆装方便。</p>
 <p><img src="/img/plane/image18.png" srcset="/img/loading.gif" lazyload alt="图2.15 无人机的整机模型展示" style="width: 70%; max-width: 600px;"></p>
-<p><img src="/img/plane/image18.png" srcset="/img/loading.gif" lazyload
-alt="图2.15 无人机的整机模型展示" />
-    产品通过对无人机起落架进行机械结构的改造，配合相应控制系统设计，实现了水面起降和滑行功能。下图为水陆空三栖无人机的机械结构实物图。</p>
+<p>    产品通过对无人机起落架进行机械结构的改造，配合相应控制系统设计，实现了水面起降和滑行功能。下图为水陆空三栖无人机的机械结构实物图。</p>
 <figure>
 <img src="/img/plane/image19.png" srcset="/img/loading.gif" lazyload alt="图2.16 两栖无人机的机械结构" />
 <figcaption aria-hidden="true">图2.16 两栖无人机的机械结构</figcaption>
@@ -582,22 +576,19 @@ class="math inline"><em>z</em><sub><em>i</em></sub> ∈ ℝ<sup>3</sup></spa
 <p>    因为温湿度、PM2.5、PM10浓度等数据的量纲差异性以及难以避免的多重共线性问题，因此我们首先利用主成分估计法，将原来的环境数据集变换到主成分空间中，选择代表性最好的主成分变量作为新的污染程度值。对于一个取样地点的全部环境数据首先进行数据标准化处理后获得了变量集：</p>
 <center>
 <span
-class="math display"><em>X</em> = (<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>,<em>x</em><sub>3</sub>,...,<em>x</em><sub><em>k</em></sub>)</span>
+class="math display"><em>X</em> = (<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>,<em>x</em><sub>3</sub>,…,<em>x</em><sub><em>k</em></sub>)</span>
 </center>
 <p>    X是第k类传感器数据的i维时间列向量。通过基变换公式行内公式：<span
 class="math inline"><em>Y</em> = <em>P</em> ⋅ <em>X</em></span>获得变换到主成分空间的样本数据集Y，其中P为k维基向量，接下来利用协方差矩阵的特征向量获得具有最大可分性的基向量P。利用协方差特征值公式：</p>
 <p><span class="math display">$$
-C=\frac{1}{m}(PX)(PX)^{T}=\frac{1}{m}(PXX)^{T}P^{T} $$</span></p>
+C=\frac{1}{m}(PX)(PX)^{T}=\frac{1}{m}(PXX)^{T}P^{T}
+$$</span></p>
 <p>    获得了协方差矩阵，其中对角元素是各变量自身的方差，其他元素是不同变量之间的协方差，此时通过求解使矩阵C对角化的P即为使主成分具有最大可分性的基向量。利用拉格朗日函数有</p>
-<center>
-<span
-class="math display"><em>J</em>(<em>P</em>) = tr (<em>P</em><em>C</em><em>P</em><sup><em>T</em></sup>) + <em>λ</em>(<em>P</em><em>P</em><sup><em>T</em></sup>−<em>I</em>)</span>
-</center>
+<p><span
+class="math display"><em>J</em>(<em>P</em>) = tr(<em>P</em><em>C</em><em>P</em><sup><em>T</em></sup>) + <strong>λ</strong>(<em>P</em><em>P</em><sup><em>T</em></sup>−<em>I</em>)</span></p>
 <p>对P求导可以获得：</p>
-</center>
-<span
-class="math display"><em>C</em><em>P</em><sup><em>T</em></sup> = (−<em>λ</em>)<em>P</em><sup><em>T</em></sup></span>
-</center>
+<p><span
+class="math display"><em>C</em><em>P</em><sup><em>T</em></sup> = (−<em>λ</em>)<em>P</em><sup><em>T</em></sup></span></p>
 <p>    对C进行特征分解，对求得的特征值排序后即可获得基向量P，PX即为降维后的主成分向量。</p>
 <figure>
 <img src="/img/plane/image35.png" srcset="/img/loading.gif" lazyload
@@ -608,13 +599,13 @@ alt="图2.23 各主成分变量所占比重分布图" />
 <p>    从图表2.23中可以观察到，第一主成分变量占据了83.5%的比重，它足以阐释环境污染的程度。因此，我们选择第一主成分变量1作为衡量环境污染状况的新指标。</p>
 <h4 id="数据短期预测"><strong>2.4.2.2 数据短期预测</strong></h4>
 <p>    尽管无人机的数据采集速度高达12km²/h，远超人工实地监测，但各个样本点的数据依旧存在时间上的差异。因此，我们首先采用自适应滤波算法对环境数据进行短期预测，这样不仅可以直接应用于环境污染状况的评估，而且还可以利用预测误差进一步预测污染源的位置分布。对某一样本点的卡尔曼自适应滤波算法的分析公式如下:</p>
-</center>
+<center>
 <span
-class="math inline"><em>ŷ</em><sub><em>t</em> + 1</sub> = <em>w</em><sub>1</sub><em>y</em><sub><em>t</em></sub> + <em>w</em><sub>2</sub><em>y</em><sub><em>t</em> − 1</sub> + … + <em>w</em><sub><em>n</em></sub><em>y</em><sub><em>t</em> − <em>n</em> + 1</sub></span>
+class="math display"><em>ŷ</em><sub><em>t</em> + 1</sub> = <em>w</em><sub>1</sub><em>y</em><sub><em>t</em></sub> + <em>w</em><sub>2</sub><em>y</em><sub><em>t</em> − 1</sub> + ⋯ + <em>w</em><sub><em>n</em></sub><em>y</em><sub><em>t</em> − <em>n</em> + 1</sub></span>
 </center>
 <p>    式中，t+1为预测数据的时间点，w为观测数据权重，y为数据观测值。该公式是通过对不同时间点的环境数据观测值进行初步赋权进而获得了短期内的环境数据预测值。</p>
 <p>通过下式：</p>
-</center>
+<center>
 <span
 class="math display"><em>w</em><sub><em>i</em></sub><sup>′</sup> = <em>w</em><sub><em>i</em></sub> + 2<em>k</em><em>e</em><sub><em>i</em> + 1</sub><em>y</em><sub><em>t</em> − <em>i</em> + 1</sub></span>
 </center>
