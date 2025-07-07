@@ -73,7 +73,7 @@
 <meta property="og:image" content="http://example.com/img/plane/image87.png">
 <meta property="og:image" content="http://example.com/img/plane/image.png">
 <meta property="article:published_time" content="2025-07-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-07T11:19:26.348Z">
+<meta property="article:modified_time" content="2025-07-07T11:20:51.798Z">
 <meta property="article:author" content="Sue Yukai">
 <meta property="article:tag" content="竞赛论文">
 <meta name="twitter:card" content="summary_large_image">
@@ -332,7 +332,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="第一章-执行总结"><strong>第一章 执行总结</strong></h1>
+                <div style="text-align: justify;">
+<h1 id="第一章-执行总结"><strong>第一章 执行总结</strong></h1>
 <h2 id="执行概要"><strong>1.1 执行概要</strong></h2>
 <p>    随着社会的发展，环境问题日益突出，监测手段多，但是成本高，效率低本项目设计了一种基于自主设计的水陆空三栖无人机的环境监测系统。目前传统的环境监测手段主要以空气监测站、人工定期巡查、视频监控等方式的。存在占地面积大、检测成本高、数据反馈不及时以及浪费大量的人力资源，导致在较高监测成本的情况下污染物超标排放和偷排现象时有发生等缺陷。本项目通过对无人机的两栖改进、算法的优化设计以及便捷的可视化软件的研发，已申请多项实用新型专利及发明型专利，软件方面已获取四项软件著作权。该产品不仅实现了高效实时的两栖环境监测，且极大的降低了系统的购置及运维成本，势必成为环境执法的利器。下图为系统展示图。</p>
 <figure>
@@ -590,7 +591,7 @@ class="math inline"><em>z</em><sub><em>i</em></sub> ∈ ℝ<sup>3</sup></spa
 <p>    其中,xi.,yi,zi等分别为在第n个地点在第i期时间序列中获得的PM2.5、PM10、大气温度、湿度等数据，直接将这些数据表达出来固然可以反映环境污染情况并能用于污染情况预测和污染源测算，但是出于两点考虑：首先，从公众关注角度讲，大多数人只需要一个综合的污染指标，太过繁杂的环境数据反而难以被普遍接受；其次，在实际应用时环境数据采集量较大，如果直接对原始数据利用机器学习算法进行处理会占用大量硬件资源并花费很多时间，无法满足环境数据实时性显示的要求。因此我们首先选择了PCA分析算法对这几类环境数据进行了主成分的提取，用综合性变量来解释环境数据的大部分特征。算法处理思路如下：</p>
 <p>    因为温湿度、PM2.5、PM10浓度等数据的量纲差异性以及难以避免的多重共线性问题，因此我们首先利用主成分估计法，将原来的环境数据集变换到主成分空间中，选择代表性最好的主成分变量作为新的污染程度值。对于一个取样地点的全部环境数据首先进行数据标准化处理后获得了变量集：</p>
 <p><span
-class="math inline"><em>X</em> = (<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>,<em>x</em><sub>3</sub>,…,<em>x</em><sub><em>k</em></sub>)</span></p>
+class="math display"><em>X</em> = (<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>,<em>x</em><sub>3</sub>,…,<em>x</em><sub><em>k</em></sub>)</span></p>
 <p>    X是第k类传感器数据的i维时间列向量。通过基变换公式行内公式：<span
 class="math inline"><em>Y</em> = <em>P</em> ⋅ <em>X</em></span>获得变换到主成分空间的样本数据集Y，其中P为k维基向量，接下来利用协方差矩阵的特征向量获得具有最大可分性的基向量P。利用协方差特征值公式：</p>
 <p><span class="math display">$$
@@ -820,6 +821,7 @@ alt="图2.45 机器视觉识别无人机流程" />
 <h1 id="第三章-附录"><strong>第三章 附录</strong></h1>
 <p><img src="/img/plane/image.png" srcset="/img/loading.gif" lazyload alt="专利申请" /> <img
 src="/img/plane/image1.png" srcset="/img/loading.gif" lazyload alt="产品试验证明" /></p>
+</div>
 
                 
               </div>
