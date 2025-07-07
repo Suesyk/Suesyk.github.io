@@ -73,7 +73,7 @@
 <meta property="og:image" content="http://example.com/img/plane/image87.png">
 <meta property="og:image" content="http://example.com/img/plane/image.png">
 <meta property="article:published_time" content="2025-07-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-07T10:56:54.681Z">
+<meta property="article:modified_time" content="2025-07-07T11:00:50.624Z">
 <meta property="article:author" content="Sue Yukai">
 <meta property="article:tag" content="竞赛论文">
 <meta name="twitter:card" content="summary_large_image">
@@ -423,7 +423,8 @@ alt="图2.2 2020-2025年环境监测产品营收" />
 <p>4.有效提高无人机的续航时间</p>
 <p>    本项目的水陆空三栖无人机往往需要飞行到一些环境较为恶劣的地方进行样本采集，在这种恶劣环境下极容易发生故障或因电量不足需要及时充电，一旦无人机失联或者因电量不足无法召回将产生不可估量的损失，更加影响气象中心的情况数据传输，对环境监测产生影响。太阳能无线充电中继站恰能解决此类问题，可以在无人机监测地带沿线布置中继站，无人机根据电量及路线自主选择最优中继站地点进行自动磁场耦合式无线充电，进而实现较长时间自动飞行，降低人工运维成本。</p>
 <figure>
-<img src="/img/plane/image6.png" srcset="/img/loading.gif" lazyload alt="图2.4 项目整体架构图" />
+<img src="/img/plane/image6.png" srcset="/img/loading.gif" lazyload
+style="width:4.38125in;height:1.83333in" alt="图2.4 项目整体架构图" />
 <figcaption aria-hidden="true">图2.4 项目整体架构图</figcaption>
 </figure>
 <h2 id="设计方案"><strong>2.4 设计方案</strong></h2>
@@ -437,7 +438,10 @@ alt="图2.2 2020-2025年环境监测产品营收" />
 OpenCV环境，运行计算机视觉相关的代码，读取处理”三目摄像头”搜集的信息，然后计算出无人机的空间坐标位置。最后实现树莓派和&amp;龙&amp;芯1c主控板之间的串口。通过主控板控制树莓派的运行，读取树莓派传输的数据。对其位置做出调整。</p>
 <p>    电机模块集成了电机及其控制电路，旨在实现龙芯1c主控板对大功率电机的小信号控制功能。该模块通过驱动大功率电机，确保无人机回收舱系统关键活动单元的高效运作，进而保障无人机的稳定性能。</p>
 <p>通过实施全面的水天一体化监测系统，我们能够有效识别和定位污染源，为环境保护和治理提供有力的数据支持和指导，这正是将绿水青山转化为金山银山理念落到实处的生动例证。</p>
-<p>!<img src="/img/plane/image8.png" srcset="/img/loading.gif" lazyload alt="图2.6 软件部分组成图" /></p>
+<figure>
+<img src="/img/plane/image8.png" srcset="/img/loading.gif" lazyload alt="图2.6 软件部分组成图" />
+<figcaption aria-hidden="true">图2.6 软件部分组成图</figcaption>
+</figure>
 <p>    软件系统由三个主要部分构成：上位机、网页端以及移动应用程序（APP)。上位机采用PyQt5进行开发，网页端则基于JavaScript构建，而移动应用程序则是利用Java开发的。这三种平台均能展示采集的数据，为用户提供便捷的途径，以实时查看监测结果。</p>
 <p>    软件将无人机采集到的数据进行可视化处理并实时显示，使环境监测数据的可读性强，极大程度上提高了用户体验；将采集到的数据结合无人机的位置信息,利用图论进行数学建模，并使用机器学习中的KNN和岭回归算法进行预测；采用Scrapy爬虫爬取谷歌地图并呈现，清楚的呈现环境监测系统所监控区域；使用C#语言进行无人机控制的上位机开发，实现了安全、有效地控制。当无人机在无线电信号接收范围内，操作者在系统运行稳定后进行C#语言编程，让无人机飞行至指定区域采集pm2.5、温度、CO2等样本，然后对传感器打开进行信号接收并转化为数据检测，最终结果由电脑记录，当电脑显示数据接收成功时可操纵其返回；返回后及时处理信息，则可命令其反复几次进行阶段性数据检测，或者到不同区域进行检测，以达到其对环境进行检测的目的，预防和治理环境。本文设计的无人机环境监测系统可充分为社会利用，为环境监测工作人员提供方便，实时监测环境，为大众提前进行天气及恶劣环境的预警，有利于大众的社会生活，也有利于全社会的文明绿色经济发展。</p>
 <figure>
