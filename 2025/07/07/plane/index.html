@@ -42,6 +42,7 @@
 <meta property="og:image" content="http://example.com/img/plane/image15.png">
 <meta property="og:image" content="http://example.com/img/plane/image16.png">
 <meta property="og:image" content="http://example.com/img/plane/image18.png">
+<meta property="og:image" content="http://example.com/img/plane/image18.png">
 <meta property="og:image" content="http://example.com/img/plane/image19.png">
 <meta property="og:image" content="http://example.com/img/plane/image20.png">
 <meta property="og:image" content="http://example.com/img/plane/image21.png">
@@ -73,7 +74,7 @@
 <meta property="og:image" content="http://example.com/img/plane/image87.png">
 <meta property="og:image" content="http://example.com/img/plane/image100.png">
 <meta property="article:published_time" content="2025-07-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-07T14:52:27.612Z">
+<meta property="article:modified_time" content="2025-07-07T15:08:33.338Z">
 <meta property="article:author" content="Sue Yukai">
 <meta property="article:tag" content="竞赛论文">
 <meta name="twitter:card" content="summary_large_image">
@@ -428,21 +429,16 @@ alt="图2.2 2020-2025年环境监测产品营收" />
 </figure>
 <h2 id="设计方案"><strong>2.4 设计方案</strong></h2>
 <p>    本项目水陆空全方位立体式环境监测系统主要由水陆空三栖无人机、自动寻光式光伏板无线充电地面中继站平台、智能数据算法构架、多终端融合可视化及控制平台四个部分组成。</p>
-<figure>
-<img src="/img/plane/image7.png" srcset="/img/loading.gif" lazyload
-style="width:4.38125in;height:1.83333in" alt="图2.5 硬件部分组成图" />
-<figcaption aria-hidden="true">图2.5 硬件部分组成图</figcaption>
-</figure>
+<p><img src="/img/plane/image7.png" srcset="/img/loading.gif" lazyload alt="图2.5 硬件部分组成图" style="width: 60%; max-width: 500px; height: auto; display: block; margin: 0 auto;"></p>
 <p>    无人机硬件部分由STM32和DJINAZA组成，控制着水质监测模块、大气监测模块、通信模块、无人机控制模块四个部分。其中水质监测模块实现了对水质的浊度、温度的实时监测；大气监测模块实现了对大气的PM2.5、二氧化碳、温度等指标的实时监测；通信模块实现了功能控制模块所采集的数据与地面站之间的实时数据传输；飞行控制模块实现了无人机稳定安全运动，并且能够自由的在空中飞行、水面起降和水面滑行三种模式之间切换。</p>
 <p>    自动寻光式光伏板无线充电地面中继站平台搭载了起降平台，同时机载计算机为树莓派3B+，通过树莓派搭建
 OpenCV环境，运行计算机视觉相关的代码，读取处理”三目摄像头”搜集的信息，然后计算出无人机的空间坐标位置。最后实现树莓派和&amp;龙&amp;芯1c主控板之间的串口。通过主控板控制树莓派的运行，读取树莓派传输的数据。对其位置做出调整。</p>
 <p>    电机模块集成了电机及其控制电路，旨在实现龙芯1c主控板对大功率电机的小信号控制功能。该模块通过驱动大功率电机，确保无人机回收舱系统关键活动单元的高效运作，进而保障无人机的稳定性能。</p>
 <p>通过实施全面的水天一体化监测系统，我们能够有效识别和定位污染源，为环境保护和治理提供有力的数据支持和指导，这正是将绿水青山转化为金山银山理念落到实处的生动例证。</p>
-<figure>
-<img src="/img/plane/image8.png" srcset="/img/loading.gif" lazyload
-style="width:4.38125in;height:1.83333in" alt="图2.6 软件部分组成图" />
-<figcaption aria-hidden="true">图2.6 软件部分组成图</figcaption>
-</figure>
+<div style="text-align: center;">
+<p><img src="/img/plane/image8.png" srcset="/img/loading.gif" lazyload alt="图2.6 软件部分组成图" 
+       style="width: 65%; max-width: 550px; height: auto; border: 1px solid #eee; padding: 8px;"></p>
+</div>
 <p>    软件系统由三个主要部分构成：上位机、网页端以及移动应用程序（APP)。上位机采用PyQt5进行开发，网页端则基于JavaScript构建，而移动应用程序则是利用Java开发的。这三种平台均能展示采集的数据，为用户提供便捷的途径，以实时查看监测结果。</p>
 <p>    软件将无人机采集到的数据进行可视化处理并实时显示，使环境监测数据的可读性强，极大程度上提高了用户体验；将采集到的数据结合无人机的位置信息,利用图论进行数学建模，并使用机器学习中的KNN和岭回归算法进行预测；采用Scrapy爬虫爬取谷歌地图并呈现，清楚的呈现环境监测系统所监控区域；使用C#语言进行无人机控制的上位机开发，实现了安全、有效地控制。当无人机在无线电信号接收范围内，操作者在系统运行稳定后进行C#语言编程，让无人机飞行至指定区域采集pm2.5、温度、CO2等样本，然后对传感器打开进行信号接收并转化为数据检测，最终结果由电脑记录，当电脑显示数据接收成功时可操纵其返回；返回后及时处理信息，则可命令其反复几次进行阶段性数据检测，或者到不同区域进行检测，以达到其对环境进行检测的目的，预防和治理环境。本文设计的无人机环境监测系统可充分为社会利用，为环境监测工作人员提供方便，实时监测环境，为大众提前进行天气及恶劣环境的预警，有利于大众的社会生活，也有利于全社会的文明绿色经济发展。</p>
 <figure>
@@ -507,11 +503,10 @@ src="/img/plane/image17.png" srcset="/img/loading.gif" lazyload alt="图2.14 通
 <h4 id="水陆空三栖无人机结构设计"><strong>2.4.1.4
 水陆空三栖无人机结构设计</strong></h4>
 <p>    水陆空三栖无人机在整体机械机构上，采用高强度轻质材料，如玻纤、玻纤维、改性塑料、改性PVC、树脂、铝合金等。无人机所有的设备都是以模块化形式安装在机架机身上面，所以优秀的机架设计可以让其他各个元器件安装合理,坚固稳定，拆装方便。</p>
-<figure>
-<img src="/img/plane/image18.png" srcset="/img/loading.gif" lazyload alt="图2.15 无人机的整机模型展示" />
-<figcaption aria-hidden="true">图2.15 无人机的整机模型展示</figcaption>
-</figure>
-<p>    产品通过对无人机起落架进行机械结构的改造，配合相应控制系统设计，实现了水面起降和滑行功能。下图为水陆空三栖无人机的机械结构实物图。</p>
+<p><img src="/img/plane/image18.png" srcset="/img/loading.gif" lazyload alt="图2.15 无人机的整机模型展示" style="width: 70%; max-width: 600px;"></p>
+<p><img src="/img/plane/image18.png" srcset="/img/loading.gif" lazyload
+alt="图2.15 无人机的整机模型展示" />
+    产品通过对无人机起落架进行机械结构的改造，配合相应控制系统设计，实现了水面起降和滑行功能。下图为水陆空三栖无人机的机械结构实物图。</p>
 <figure>
 <img src="/img/plane/image19.png" srcset="/img/loading.gif" lazyload alt="图2.16 两栖无人机的机械结构" />
 <figcaption aria-hidden="true">图2.16 两栖无人机的机械结构</figcaption>
@@ -538,12 +533,7 @@ alt="图2.18 中继站渲染图图2.19中继站实物外观图" />
 <p>    (1)磁场耦合式自动充电：通过对无人机充电接口的改装，在其降落校正后的地点安装受主控板控制的机械式自动充电装置，对其的电量进行补给。</p>
 <p>    (2)无线式自动充电装置：通过改装无人机充电接口（安装无线充电的接收极），然后在其回收舱的降落平台上安装无线充电的发射极，实现对其电量的非接触式补给。</p>
 <p>(3)自动寻光式太阳能板：</p>
-<figure>
-<img src="/img/plane/image22.png" srcset="/img/loading.gif" lazyload
-alt="图2.20 自动寻光太阳能板结构模型" />
-<figcaption aria-hidden="true">图2.20
-自动寻光太阳能板结构模型</figcaption>
-</figure>
+<p><img src="/img/plane/image22.png" srcset="/img/loading.gif" lazyload alt="图2.20 自动寻光太阳能板结构模型" style="width: 70%; max-width: 600px;"></p>
 <p>    为了充分的利用太阳能，提高太阳能的利用率，我们对太阳能光伏板进行了太阳能追踪系统的设计。根据下表的实验检测数据可得，在相同时间，相同条件下采用自动追踪设备要比采用固定安装设备的发电效率高。我们对同一天中的8：00am、12:00pm、16:00pm三个太阳光照明显不同的时间点进行了数据对比，对比发现8：00am的能量接受率相差26.5%、12:00pm的能量接受率相差3.3%、16:00pm的能量接受率相差52%。</p>
 <figure>
 <img src="/img/plane/image23.png" srcset="/img/loading.gif" lazyload alt="图2.21 自动寻光测试数据图" />
