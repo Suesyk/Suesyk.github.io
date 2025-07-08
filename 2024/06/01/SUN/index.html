@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://example.com/img/SUN/image50.png">
 <meta property="og:image" content="http://example.com/img/SUN/image52.jpeg">
 <meta property="article:published_time" content="2024-06-01T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-08T14:00:47.300Z">
+<meta property="article:modified_time" content="2025-07-08T14:13:14.283Z">
 <meta property="article:author" content="Sue Yukai">
 <meta property="article:tag" content="竞赛论文">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.7k 字
+          4.8k 字
         
       </span>
     
@@ -253,7 +253,7 @@
         
         
         
-          40 分钟
+          41 分钟
         
       </span>
     
@@ -425,9 +425,13 @@ alt="图2.11 光伏电站电池板表面灰尘粒径级配曲线" />
 <figcaption aria-hidden="true">图2.11
 光伏电站电池板表面灰尘粒径级配曲线</figcaption>
 </figure>
-<p>    由上图可知，光伏电站电池板表面灰尘粒径约为(30,)。则可求得气流对灰尘作用力约为(F_{}
-= pA = 2.5×10^{7},)，大于灰尘所受的粘附力，可以有效除尘。</p>
-<p><strong>2.4.2超声波清洁装置</strong></p>
+<p>    由上图可知，光伏电站电池板表面灰尘粒径约为 ( 30,
+)。则可求得气流对灰尘作用力约为 ( F_{} = pA )，其值为 ( 2.5 ^7,
+)（这里需注意物理量单位逻辑：压强 ( p ) 单位是 ( )，力 ( F ) 单位应为 (
+)，原表述可能存在笔误，推测是通过压强 ( p ) 乘以面积 ( A )
+计算力，正确力的结果单位应为 ( ) ，若按现有内容呈现则如上述公式
+），大于灰尘所受的粘附力，可以有效除尘。</p>
+<h3 id="超声波清洁装置"><strong>2.4.2超声波清洁装置</strong></h3>
 <p>（1）原理：</p>
 <p>    当超声波在固体介质中传播时，介质质点就在平衡位置附近振动。经过理论分析和实际研究表明，介质质点振动的加速度与振幅成正比<sup>[3]</sup>。即超声波在固体介质中传播时，可以使质点出现极大的加速度和作用力，所以当固定频率超声波通过太阳能板时，引起太阳能板共振，使太阳能板上的玻璃介质产生极大的瞬时加速度，利用污垢和灰尘的惯性，将其抖落。</p>
 <p>（2）超声波振动清洗的方法：</p>
@@ -436,21 +440,21 @@ alt="图2.11 光伏电站电池板表面灰尘粒径级配曲线" />
 <img src="/img/SUN/image47.png" srcset="/img/loading.gif" lazyload alt="图2.12 超声波振动清洁器" />
 <figcaption aria-hidden="true">图2.12 超声波振动清洁器</figcaption>
 </figure>
-<p><strong>2.4.3风机</strong></p>
+<h3 id="风机"><strong>2.4.3风机</strong></h3>
 <figure>
 <img src="/img/SUN/image48.png" srcset="/img/loading.gif" lazyload alt="图2.13 风机" />
 <figcaption aria-hidden="true">图2.13 风机</figcaption>
 </figure>
 <p>    风机风量216m3/h；功率85W；风压280Pa；电压220V/380V；频率50Hz；重量2.6kg；尺寸175×110×220mm。对比选择：离心式风机的空气流量为数公斤至数十公斤每秒。亚音速离心式压气机的增压比约为4.5,超音速离心式压气机可达8～10，效率约为0.78。轴流式风机的空气流量为几公斤每秒到二百公斤每秒，单级增压比一般约为1.1～2.0，效率约为0.85～0.88。离心式压气机虽然效率略低，但增压比更大，且成本低，重量轻，所以此处我们选择离心式风机。</p>
-<p><strong>2.4.4通信模块</strong></p>
+<h3 id="通信模块"><strong>2.4.4通信模块</strong></h3>
 <p>    通信模块采用LTC2856IMS8芯片，该芯片采用+5V电源工作，其额定电流为900μＡ，它能将UART输出电平转换为RS485电平.该芯片有8个引脚，其内部含有1个接收器和1个驱动器。RO为接收器的输出端，接单片机的RX引脚；DI为驱动器的输入端，接单片机的TX引脚。RE是接收使能端，当RE=0时，LTC2856IMS8芯片处于接收状态；DE是发送使能端，当DE=1时。LTC2856IMS8芯片处于发送状态，RE和DE接单片机的RE引脚。</p>
 <figure>
 <img src="/img/SUN/image49.png" srcset="/img/loading.gif" lazyload alt="图2.14 LTC2856IMS8引脚图" />
 <figcaption aria-hidden="true">图2.14 LTC2856IMS8引脚图</figcaption>
 </figure>
-<p><strong>2.4.5电源模块</strong></p>
+<h3 id="电源模块"><strong>2.4.5电源模块</strong></h3>
 <p>    本设计选取蓄电池作为整个系统的储能模块，太阳能光伏发电板作为蓄电池的能量来源，为整套装置供电。设备使用导轨供电，两导轨分别为电源两级，节省了电缆的铺设费用，也避免了携带电源导致的设备自重过大。</p>
-<p><strong>2.5追光模块</strong></p>
+<h2 id="追光模块"><strong>2.5追光模块</strong></h2>
 <p>    本设计带光伏的双轴太阳能跟踪器，以便在白天跟随太阳。光伏发电为太阳能跟踪器供电（无需外部电源）。该模块包括：主控电路，显示接口电路，电源电路，LED显示电路，电压采集电路，舵机接口电路，独立按键电路，光敏模块采集电路。主控芯片采用STC15F2K60S2，XI、XO为外部晶振输入输出接口。装置采用了一个12M的无源晶振，为主控芯片提供时钟。该芯片内部自带时钟，所以不接外部晶振也行。但是内部的不如外部的稳定，所以我采用了外接时钟的方式。复位电路：复位端口需要采集到24个时钟周期以上的高电平脉冲，才会进行复位。所以我采用了一按键的形式，实现手动复位。</p>
 <p>    信号采集电路，利用电位器对电池板输入的电压进行分压，以免流入单片机引脚电压过大，损坏单片机。单片机通过带有AD转换功能的引脚采集电池板输入的电压值。光敏电阻模块，直接输出一个数字量的信号送入单片机，单片机通过RIN1~4`引脚进行采集。</p>
 <p><img src="/img/SUN/image50.png" srcset="/img/loading.gif" lazyload alt="图2.15 主控电路图" /> <img
