@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>光伏先锋——基于超声波振动的轻量化光伏板清洁装置 | Sue_syk</title><meta name="keywords" content="Blynk,超声波清洁"><meta name="author" content="Sue_syk"><meta name="copyright" content="Sue_syk"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="光伏先锋——基于超声波振动的轻量化光伏板清洁装置"><meta name="application-name" content="光伏先锋——基于超声波振动的轻量化光伏板清洁装置"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="光伏先锋——基于超声波振动的轻量化光伏板清洁装置"><meta property="og:url" content="http://example.com/2024/06/01/SUN/index.html"><meta property="og:site_name" content="Sue_syk"><meta property="og:description" content="过导轨移动式清洁度检测装置实时监测板面污染程度，当灰尘反射光强低于阈值时，触发无水清洁模块：离心风机产生强力气流配合超声波振动器使光伏板共振，利用灰尘惯性分离原理高效清除30μm级颗粒，避免传统水洗的资源浪费与机械磨损。同时集成双轴追光系统最大化光能捕获，并通过Blynk物联网APP实现清洁状态监控"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="Sue_syk"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="过导轨移动式清洁度检测装置实时监测板面污染程度，当灰尘反射光强低于阈值时，触发无水清洁模块：离心风机产生强力气流配合超声波振动器使光伏板共振，利用灰尘惯性分离原理高效清除30μm级颗粒，避免传统水洗的资源浪费与机械磨损。同时集成双轴追光系统最大化光能捕获，并通过Blynk物联网APP实现清洁状态监控"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2024/06/01/SUN/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Sue_syk","link":"链接: ","source":"来源: Sue_syk","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Sue_syk',
+  title: '光伏先锋——基于超声波振动的轻量化光伏板清洁装置',
+  postAI: '',
+  pageFillDescription: '1 研制背景及意义, 2 设计方案, 2.1总体机械结构设计, 2.2控制模块, 2.3 驱动模块, 2.3.1步进电机, 2.3.2清洁度检测装置, 2.4 清洁模块, 2.4.1板面灰尘分析, 2.4.2超声波清洁装置, 2.4.3风机, 2.4.4通信模块, 2.4.5电源模块, 2.5追光模块, 3 工作原理及性能分析, 3.1工作原理, 3.2 APP设计, 3.2.1设计方案, 3.2.2 APP成果图, 4 主要创新点, 5 效益与应用前景, 参考文献摘要太阳能是世纪的新型能源全国每年太阳辐射总量达到相当于亿吨标准煤的储能我国西北部太阳能资源丰富是太阳辐射最强的地区有着得天独厚的太阳能资源优势在当今世界能源紧缺生态环境恶化的情况下开发利用包括太阳能在内的新能源成为世界各国关注的热点目前主要应用于太阳能光伏发电方面西部地区光伏组件长时间暴露在自然环境中其灰尘及污垢对发电效率有着很大的影响但是现有的除尘方法具有一定的限制通过对比现有的方法经过探索分析提出一种新型可自动监测清洁度及无水清洁太阳能板的方法并实现了光伏板的追光功能关键词光伏发电节能自动监测系统无水除尘研制背景及意义世纪是世界能源结构发生巨大变革的世纪由于传统能源如煤石油天然气等的供给已出现严重短缺局面人类开始将目光转向可再生能源的发展大规模地开发利用可再生洁净能源以资源无限清洁干净的可再生能源为主的多样性的能源结构代替以资源有限污染严重的石化能源为主的能源结构已成为人们关注的焦点太阳能作为一种新型的绿色可再生能源与其他新能源相比利用最大是最理想的可再生能源在中国荒漠地区土地广阔太阳能资源非常丰富如下图所示开发利用潜力巨大特别是近几十年来随着科学技术的不断进步太阳能及其相关产业成为世界发展最快的行业之一太阳能的开发利用主要有光热利用光伏利用光化学利用等三种形式由于维护简单使用方便以太阳能电池技术为核心的太阳能光伏利用成为太阳能开发利用中最重要的应用领域随着光伏并网发电运行光伏电站的后期的持续高效运行的维护问题日显突出由于部分地区风沙大降水少或干旱气候这给光伏产业带来较为严峻的新问题为此国务院也出台了相关政策促进光伏发电产业健康发展光伏电站的后期维护和提高光伏发电效率的问题逐渐成为人们关注当日焦点光伏电站建设完成后经过测定其实际年发电量远低于理论年发电量除了由于单晶硅多晶硅原材料本身影响太阳能转换效率的原因之外还有一个重要的因素就是光伏组件长时间暴露在空气中灰尘降落到光伏组件表面并且长时间不清理光伏组件的输出功率下降最高将达到以上尤其是在西北地区光伏电站大多建在戈壁滩上自然环境恶劣有雨水浸湿时会形成积垢以一个的光伏电站为例损失率按计算伏电站运营年的总损失约为度年瓦兆瓦电站规模年工作年限元度上网电价损失的效率元约为万元可见损失极为巨大若能及时的对灰尘进性清洁提高光伏发电效率经济效益会有很大提升通过查阅资料和实地调研发现现有的光伏电站除尘方式均有一定的局限性并不适用于西北部地区的光伏组件的清洁为此我们对灰尘和积垢的消除做了一些研究设计了新型光伏板清洁器设计方案总体机械结构设计清洁度检测仪及风机沿着导轨移动超声波振动清洁器固定在光伏板的一边如图所示控制模块采用单片机作为核心处理器电源供电通过定时器定时无线控制驱动模块沿着导轨进行清洁度扫描之后返回信号根据信号判断是否触发清洁模块并通过无线串口通信完成信息交互单片机条口线个可编程定时计数器个中断源个优先级一个全双工串行通信口外部数据存储器寻址空间为外部程序存储器寻址空间为逻辑操作位寻址功能双列直插封装单一电源供电能够满足数据采集智能管理信号输出等工作为系统的功能实现提供了基础和保障原理如下图定时设计单片机外加晶振计数器由高位和低位两个寄存器和组成原理图如上图是定时计数器的工作方式寄存器确定工作方式和功能是控制寄存器控制的启动和停止及设置溢出标志根据设计需要在每天傍晚八点开始工作采用定时器工作方式采用定时功能时间间隔为小时即设单位定时为则计数个数并计算初值初值计数个数用进制表示为当计数器计满后溢出中断发送驱动模块启动信号驱动模块步进电机采用步进电机外接光伏板蓄电池电源依然采用单片机用于控制导轨上的步进电机转动通过定时器和继电器来定时驱动边缘配备有红外检测装置可以清洁模块的位置防止模块触碰到边缘和跌落太阳能光伏电板的的情况发生清洁度检测装置检测原理为光源以一定角度照射到光伏板表面上一部分光被反射一部分光被光伏板表面灰尘等散射和吸收则有为入射光强为反射光强为吸收光强为散射光强则可知当表面积灰过多会导致反射光强减弱即清洁度与反射光强成正相关如图为驱动电路模块为为滤光片为光电探测器光源以一定角度照射到光伏板表面在表面发生散射吸收和反射滤光片可以滤除环境中的杂光采用光敏原件实时检测反射的光信号对信号过滤放大处理通过单片机接收处理数据根据光伏板表面污浊程度对光伏板的发电量影程度找到一个反射光强的阈值确定为触发清洁模块的信号信号转换本设计采用芯片作为核心控制将光敏电阻原件接入管脚上下两端分别接和通过管道进行数据处理通过光敏电阻的阻值反映反射光的强弱从而判断光伏板表面的清洁度通过实验测出表面污浊程度和光伏板发电量的关系得出一个光敏电阻的阈值确定为信号转换后的比较值清洁模块板面灰尘分析为灰尘颗粒球心为平行于电池板表面且过球心的坐标垂直于电池板表面且过球心的坐标为灰尘颗粒的半径为灰尘颗粒的重力和分别为重力在和方向的分量为灰尘颗粒间相互作用力和分别为在和方向的分量为总静电力为范德华力由上图可知灰尘净重力随灰尘颗粒半径的增大而迅速增大增速明显快于随灰尘颗粒半径线性变化的范德华力由局部图可知起初范德华力大于净重力分量范德华力是主要粘附力由局部图可知灰尘颗粒半径在约时范德华力和净重力分量对合力的影响都比较大由整体图可知随着半径的增大大于约净重力分量大于范德华力净重力分量逐渐起主导作用由上图分析可知当灰尘颗粒半径较小时小于约时合力数量级由范德华力数量级决定所取的数量级约为灰尘颗粒半径在之间时数量级由范德华力和重力同时决定取值范围约为灰尘颗粒半径较大时大于约时合力数量级由净重力的分量的数量级决定取值范围约为因此可知在所有灰尘颗粒半径取值范围内合力的取值范围一般在之间由上图可知光伏电站电池板表面灰尘粒径约为则可求得气流对灰尘作用力约为风大于灰尘所受的粘附力可以有效除尘超声波清洁装置原理当超声波在固体介质中传播时介质质点就在平衡位置附近振动经过理论分析和实际研究表明介质质点振动的加速度与振幅成正比即超声波在固体介质中传播时可以使质点出现极大的加速度和作用力所以当固定频率超声波通过太阳能板时引起太阳能板共振使太阳能板上的玻璃介质产生极大的瞬时加速度利用污垢和灰尘的惯性将其抖落超声波振动清洗的方法结构示意图如图一所示在柜体中直流电源与太阳能板接通由逆变器转化为交流电后与超声波发生器相连超声波发生器将电能转化为超声波信号通过传输电缆传送到超声波换能振动器换能振动器将这一声波经变幅杆与振动头传送到太阳能板表面的玻璃板上引起玻璃板共振使被振松了的污染物及时脱离工件达到清洗的目的风机风机风量功率风压电压频率重量尺寸对比选择离心式风机的空气流量为数公斤至数十公斤每秒亚音速离心式压气机的增压比约为超音速离心式压气机可达效率约为轴流式风机的空气流量为几公斤每秒到二百公斤每秒单级增压比一般约为效率约为离心式压气机虽然效率略低但增压比更大且成本低重量轻所以此处我们选择离心式风机通信模块通信模块采用芯片该芯片采用电源工作其额定电流为它能将输出电平转换为电平该芯片有个引脚其内部含有个接收器和个驱动器为接收器的输出端接单片机的引脚为驱动器的输入端接单片机的引脚是接收使能端当时芯片处于接收状态是发送使能端当时芯片处于发送状态和接单片机的引脚电源模块本设计选取蓄电池作为整个系统的储能模块太阳能光伏发电板作为蓄电池的能量来源为整套装置供电设备使用导轨供电两导轨分别为电源两级节省了电缆的铺设费用也避免了携带电源导致的设备自重过大追光模块本设计带光伏的双轴太阳能跟踪器以便在白天跟随太阳光伏发电为太阳能跟踪器供电无需外部电源该模块包括主控电路显示接口电路电源电路显示电路电压采集电路舵机接口电路独立按键电路光敏模块采集电路主控芯片采用为外部晶振输入输出接口装置采用了一个的无源晶振为主控芯片提供时钟该芯片内部自带时钟所以不接外部晶振也行但是内部的不如外部的稳定所以我采用了外接时钟的方式复位电路复位端口需要采集到个时钟周期以上的高电平脉冲才会进行复位所以我采用了一按键的形式实现手动复位信号采集电路利用电位器对电池板输入的电压进行分压以免流入单片机引脚电压过大损坏单片机单片机通过带有转换功能的引脚采集电池板输入的电压值光敏电阻模块直接输出一个数字量的信号送入单片机单片机通过引脚进行采集工作原理及性能分析工作原理光伏板上有震动器可带动光伏感震动光伏板上包括光敏传感器雨雪传感器当检测光强弱或者有雨雪时光伏板震动清洁度检测仪的风机启动在导轨上来回运动一次前一次运动与后一次运动的间隔至少直到触发运动状态的条件消除设备运动完成当前周期回到原点后停止设计设计方案采用物联网可以查看当前光强数据和雨雪数据折现动态图可切换自动模式和手动模式手动模式下可控制震动器运动清洁度检测仪在滑轨上左右滑动风机启停成果图主要创新点实现了光伏板的无水化清洁对于西北部寒冷地区无水清洁不受到季节及环境因素的影响对于干旱地区和少降水地区无水清洁可以节省大量水资源绿色环保清洁时对光伏板面没有直接的物理接触有效避免了清洁时对光伏板表面的机械磨损延长了光伏板的使用寿命没有清洁材料作用在光伏板的表面避免了清洁材料对其表面化学侵蚀同时避免了化学洗涤产品的使用减少对环境的污染实现了光伏板清洁的自动化可以高效完成清洁全天候工作节省了人力物力整套装置的供电电源来自光伏板自身发电电能无需外接电缆节省了能源根据定时检测表明的清洁度可以有效避免灰尘长期在表面累积成垢从而导致对表面的破坏延长其使用寿命提高光伏发电效率效益与应用前景在所有清洗方式中清洗成本大体可分为设备成本和消耗成本超声波清洗设备使用寿命约为年除了设备成本高于手工清洗和有机溶剂刷洗外低于高压水射流清洗对于消耗成本以有效尺寸功率为价格约为万元的超声波清洗机为例工作一小时耗电一度费用约仅为元清洗剂公斤价格约为元反复使用小时相当于元每小时且装置可以对一定范围内的光伏板同时清洗因此超声波清洁不仅效果好消耗成本也低在西北自然环境恶劣的地区风沙多水资源紧缺光伏板清理困难且常年积垢而此装置不需要水源有效避免了水源浪费问题进而提升其经济效益且绿色环保参考文献徐巧年魏显文西北地区灰尘对光伏组件发电效率的影响及除尘方法的探索产业与科技论坛周晓明朱周洪陈军松等光反射型光伏板清洁度检测仪设计中国计量学院学报任金莲张明铎牛勇超声波清洗的一种新方法陕西师范大学学报自然科学版东北电力大学一种太阳能光伏板表面超声波防垢除垢系统中国专利高德东孟广双王珊等荒漠环境中电池板表面灰尘颗粒力学模型建立可再生能源高德东孟广双王珊等荒漠地区电池板表面灰尘特性分析可再生能源',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-07 16:08:47',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Sue_syk</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3Dshow/" style="font-size: 1.05rem;">3Dshow<sup>1</sup></a><a href="/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/" style="font-size: 1.05rem;">媒体报道<sup>1</sup></a><a href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" style="font-size: 1.05rem;">竞赛论文<sup>3</sup></a><a href="/tags/%E7%AE%80%E5%8E%86/" style="font-size: 1.05rem;">简历<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" itemprop="url">竞赛论文</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>竞赛论文</span></a></span></div></div><h1 class="post-title" itemprop="name headline">光伏先锋——基于超声波振动的轻量化光伏板清洁装置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-06-01T04:00:00.000Z" title="发表于 2024-06-01 12:00:00">2024-06-01</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-08-07T08:08:47.706Z" title="更新于 2025-08-07 16:08:47">2025-08-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2024/06/01/SUN/"><header><a class="post-meta-categories" href="/categories/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" itemprop="url">竞赛论文</a><a href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" tabindex="-1" itemprop="url">竞赛论文</a><h1 id="CrawlerTitle" itemprop="name headline">光伏先锋——基于超声波振动的轻量化光伏板清洁装置</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Sue_syk</span><time itemprop="dateCreated datePublished" datetime="2024-06-01T04:00:00.000Z" title="发表于 2024-06-01 12:00:00">2024-06-01</time><time itemprop="dateCreated datePublished" datetime="2025-08-07T08:08:47.706Z" title="更新于 2025-08-07 16:08:47">2025-08-07</time></header><p><strong>摘要</strong>：太阳能是21世纪的新型能源，全国每年太阳辐射总量达到$8.4 \times 10^{3}MJ&#x2F;m^{2}$，相当于$2.4 \times 10^{4}$亿吨标准煤的储能，我国西北部太阳能资源丰富，是太阳辐射最强的地区，有着得天独厚的太阳能资源优势。在当今世界能源紧缺、生态环境恶化的情况下，开发利用包括太阳能在内的新能源成为世界各国关注的热点。目前主要应用于太阳能光伏发电方面，西部地区光伏组件长时间暴露在自然环境中，其灰尘及污垢对发电效率有着很大的影响，但是现有的除尘方法具有一定的限制，通过对比现有的方法，经过探索分析，提出一种新型可自动监测清洁度及无水清洁太阳能板的方法，并实现了光伏板的追光功能。</p>
+<p><strong>关键词</strong>：<strong>光伏发电；节能；自动；监测系统；无水除尘</strong></p>
+<h1 id="1-研制背景及意义"><a href="#1-研制背景及意义" class="headerlink" title="1 研制背景及意义"></a><strong>1 研制背景及意义</strong></h1><p>&ensp;&ensp;&ensp;&ensp;21世纪是世界能源结构发生巨大变革的世纪。由于传统能源(如煤、石油、天然气等)的供给已出现严重短缺局面，人类开始将目光转向可再生能源的发展。大规模地开发利用可再生洁净能源，以资源无限、清洁干净的可再生能源为主的多样性的能源结构代替以资源有限、污染严重的石化能源为主的能源结构已成为人们关注的焦点。</p>
+<p>&ensp;&ensp;&ensp;&ensp;太阳能作为一种新型的绿色可再生能源，与其他新能源相比利用最大，是最理想的可再生能源。在中国荒漠地区土地广阔，太阳能资源非常丰富（如下图1.1所示），开发利用潜力巨大特别是近几十年来，随着科学技术的不断进步，太阳能及其相关产业成为世界发展最快的行业之一。太阳能的开发利用主要有光热利用、光伏利用、光化学利用等三种形式。由于维护简单、使用方便，以太阳能电池技术为核心的太阳能光伏利用成为太阳能开发利用中最重要的应用领域。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image1.png" alt="图1.1 我国太阳能资源分布"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image2.png" alt="图1.2 近五年来我国光伏发电产业变化趋势"></p>
+<p>&ensp;&ensp;&ensp;&ensp;随着光伏并网发电运行，光伏电站的后期的持续高效运行的维护问题日显突出。由于部分地区风沙大、降水少或干旱气候，这给光伏产业带来较为严峻的新问题。为此，国务院也出台了相关政策，促进光伏发电产业健康发展。光伏电站的后期维护和提高光伏发电效率的问题逐渐成为人们关注当日焦点。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image3.png" alt="图1.3 国务院印发光伏发电健康建设开发有关事项通知"></p>
+<p>&ensp;&ensp;&ensp;&ensp;光伏电站建设完成后，经过测定其实际年发电量远低于理论年发电量,除了由于单晶硅、多晶硅原材料本身影响太阳能转换效率的原因之外,还有一个重要的因素就是光伏组件长时间暴露在空气中,灰尘降落到光伏组件表面,并且长时间不清理，光伏组件的输出功率下降最高将达到20%以上，尤其是在西北地区，光伏电站大多建在戈壁滩上，自然环境恶劣，有雨水浸湿时会形成积垢。以一个10MW的光伏电站为例,损失率按10%计算，伏电站运营25年的总损失约为:1.3度&#x2F;年&#x2F;瓦×10兆瓦(电站规模) ×25年 (工作年限) ×0.8元&#x2F;度 (上网电价) ×10% (损失的效率) &#x3D;26,<br>000, 000元, 约为2,600万元,可见损失极为巨大，若能及时的对灰尘进性清洁，提高光伏发电效率，经济效益会有很大提升。通过查阅资料和实地调研发现, 现有的光伏电站除尘方式均有一定的局限性,并不适用于西北部地区的光伏组件的清洁。为此我们对灰尘和积垢的消除做了一些研究，设计了新型光伏板清洁器。</p>
+<h1 id="2-设计方案"><a href="#2-设计方案" class="headerlink" title="2 设计方案"></a><strong>2 设计方案</strong></h1><h2 id="2-1总体机械结构设计"><a href="#2-1总体机械结构设计" class="headerlink" title="2.1总体机械结构设计"></a><strong>2.1总体机械结构设计</strong></h2><p>&ensp;&ensp;&ensp;&ensp;清洁度检测仪及风机沿着导轨移动，超声波振动清洁器固定在光伏板的一边，如图所示：</p>
+<blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image4.png" alt="图2.1 总体机械结构设计"></p>
+</blockquote>
+<h2 id="2-2控制模块"><a href="#2-2控制模块" class="headerlink" title="2.2控制模块"></a><strong>2.2控制模块</strong></h2><p>&ensp;&ensp;&ensp;&ensp;采用c51单片机作为核心处理器，5v电源供电，通过定时器定时无线控制驱动模块，沿着导轨进行清洁度扫描，之后返回信号，根据信号判断是否触发清洁模块，并通过无线串口通信完成信息交互。</p>
+<p><strong>① c51单片机：</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp;32条I&#x2F;O口线，2个可编程定时&#x2F;计数器，5个中断源，2个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BC%98%E5%85%88%E7%BA%A7">优先级</a>一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%A8%E5%8F%8C%E5%B7%A5">全双工</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%B2%E8%A1%8C%E9%80%9A%E4%BF%A1">串行通信</a>口，外部数据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E5%99%A8">存储器</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AF%BB%E5%9D%80%E7%A9%BA%E9%97%B4">寻址空间</a>为64kB，外部<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%99%A8">程序存储器</a>寻址空间为64kB，逻辑操作<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BD%8D%E5%AF%BB%E5%9D%80">位寻址</a>功能·双列直插40PinDIP封装单一，+5V电源供电。能够满足数据采集、智能管理、PWM信号输出等工作，为系统的功能实现提供了基础和保障。原理如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image5.png" alt="图2.2 单片机引脚图"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image6.png" alt="图2.3 计数器原理图"></p>
+<p><strong>② 定时设计：</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp;单片机外加12MHZ晶振，计数器由高8位和低8位两个寄存器THx和TLx组成，原理图如上图，TMOD是定时&#x2F;计数器的工作方式寄存器，确定工作方式和功能；TCON是控制寄存器，控制T0、T1的启动和停止及设置溢出标志。根据设计需要：在每天傍晚八点开始工作。采用定时器0，工作方式0，采用定时功能。时间间隔为24小时，即24*3600&#x3D;86400s。设单位定时为1ms，则计数个数:N&#x3D;1ms&#x2F;1μm&#x3D;1000并计算初值：初值B&#x3D;2~16-计数个数&#x3D;64536用16进制表示为FC18。当T0计数器计满后溢出中断，CPU发送驱动模块启动信号。</p>
+<h2 id="2-3-驱动模块"><a href="#2-3-驱动模块" class="headerlink" title="2.3 驱动模块"></a><strong>2.3 驱动模块</strong></h2><h3 id="2-3-1步进电机"><a href="#2-3-1步进电机" class="headerlink" title="2.3.1步进电机"></a><strong>2.3.1步进电机</strong></h3><p>&ensp;&ensp;&ensp;&ensp;采用步进电机外接光伏板蓄电池电源，依然采用89c51单片机用于控制导轨上的步进电机转动，通过定时器和继电器来定时驱动。边缘配备有红外检测装置，可以清洁模块的位置，防止模块触碰到边缘和跌落太阳能光伏电板的的情况发生。</p>
+<h3 id="2-3-2清洁度检测装置"><a href="#2-3-2清洁度检测装置" class="headerlink" title="2.3.2清洁度检测装置"></a><strong>2.3.2清洁度检测装置</strong></h3><p>&ensp;&ensp;&ensp;&ensp;检测原理为：光源以一定角度照射到光伏板表面上，一部分光被反射，一部分光被光伏板表面灰尘等散射和吸收．则有<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image7.png">$$ I_{o} $$为入射光强，$$ I_{r} $$为反射光强，$$ I_{a} $$为吸收光强，$$ I_{s} $$为散射光强。则。可知当表面积灰过多，会导致反射光强减弱。即清洁度与反射光强成正相关。如图1：101为驱动电路模块、<br>102为LED、103为滤光片、104为光电探测器。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image12.png" alt="图2.4 清洁度检测装置"></p>
+<p>&ensp;&ensp;&ensp;&ensp;光源以一定角度照射到光伏板表面，在表面发生散射、吸收和反射，滤光片可以滤除环境中的杂光，采用光敏原件实时检测反射的光信号，对信号过滤放大处理，通过c51单片机接收处理数据，根据光伏板表面污浊程度对光伏板的发电量影程度找到一个反射光强的阈值，确定为触发清洁模块的信号。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image13.png" alt="图2.5 电路示意图"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image14.png" alt="图2.6 语言主程序"></p>
+<p>&ensp;&ensp;&ensp;&ensp;AD信号转换：本设计采用芯片XPT2046作为核心控制，将光敏电阻原件接入AIN2管脚，上下两端分别接VCC和GND，通过管道VBAT进行数据处理。通过光敏电阻的阻值反映led反射光的强弱，从而判断光伏板表面的清洁度，通过实验测出表面污浊程度和光伏板发电量的关系得出一个光敏电阻的阈值确定为AD信号转换后的比较值。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image15.png" alt="图2.7 XPT2046"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image16.png" alt="图2.8 光敏电阻原件"></p>
+<h2 id="2-4-清洁模块"><a href="#2-4-清洁模块" class="headerlink" title="2.4 清洁模块"></a><strong>2.4 清洁模块</strong></h2><h3 id="2-4-1板面灰尘分析"><a href="#2-4-1板面灰尘分析" class="headerlink" title="2.4.1板面灰尘分析"></a><strong>2.4.1板面灰尘分析</strong></h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image17.png" alt="图2.9 灰层受力分析图"></p>
+<p>&ensp;&ensp;&ensp;&ensp;O为灰尘颗粒球心；X为平行于电池板表面且过球心的坐标，Y垂直于电池板表面且过球心的坐标；R为灰尘颗粒的半径；G为灰尘颗粒的重力$$ G_{x} $$和$$ G_{y} $$分别为重力在x和y方向的分量，T为灰尘颗粒间相互作用力;$$ T_{x} $$和$$ T_{x} $$分别为T在x和y方向的分量，$$ F_{E} $$为总静电力，$$ F_{vdW} $$为范德华力。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image33.png" alt="a.半径小于![](&#x2F;img&#x2F;SUN&#x2F;image35.png)时灰尘的受力图"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image34.png" alt="b.半径取值![](&#x2F;img&#x2F;SUN&#x2F;image36.png)时的灰尘受力分析图"></p>
+<p>&ensp;&ensp;&ensp;&ensp;由上图可知，灰尘净重力随灰尘颗粒半径的增大而迅速增大，增速明显快于随灰尘颗粒半径线性变化的范德华力。由 a 局部图，可知起初范德华力大于净重力分量，范德华力是主要粘附力；由 b 局部图，可知灰尘颗粒半径在约 $10×10^{-6} - 20×10^{-6},\text{m}$ 时，范德华力和净重力分量对合力的影响都比较大；由整体图 $[5]$，可知随着半径的增大（大于约 $20×10^{-6},\text{m}$ ），净重力分量大于范德华力，净重力分量逐渐起主导作用。由上图分析可知当灰尘颗粒半径较小时，$R$ 小于约 $10×10^{-6},\text{m}$ 时，合力 $F$ 数量级由范德华力数量级决定，所取的数量级约为 $10^{-10},\text{N}$ ；灰尘颗粒半径 $R$ 在 $10×10^{-6} - 20×10^{-6},\text{m}$ 之间时，$F$ 数量级由范德华力和重力同时决定，取值范围约为 $10^{-10} - 10^{-9},\text{N}$ ；灰尘颗粒半径较大时，$R$ 大于约 $20×10^{-6},\text{m}$ 时，合力 $F$ 数量级由净重力的分量的数量级决定，取值范围约为 $10^{-9} - 10^{-8},\text{N}$ 。因此可知，在所有灰尘颗粒半径取值范围内，合力 $F$ 的取值范围一般在 $10^{-10} - 10^{-8},\text{N}$ 之间。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image44.png" alt="图2.11 光伏电站电池板表面灰尘粒径级配曲线"></p>
+<p>&ensp;&ensp;&ensp;&ensp;由上图可知，光伏电站电池板表面灰尘粒径约为30μm。则可求得气流对灰尘作用力约为$$ F_{风} $$ &#x3D; pA &#x3D; 2.5×10⁷Pa，大于灰尘所受的粘附力，可以有效除尘。</p>
+<h3 id="2-4-2超声波清洁装置"><a href="#2-4-2超声波清洁装置" class="headerlink" title="2.4.2超声波清洁装置"></a><strong>2.4.2超声波清洁装置</strong></h3><p>（1）原理：</p>
+<p>&ensp;&ensp;&ensp;&ensp;当超声波在固体介质中传播时，介质质点就在平衡位置附近振动。经过理论分析和实际研究表明，介质质点振动的加速度与振幅成正比^[3]^。即超声波在固体介质中传播时，可以使质点出现极大的加速度和作用力，所以当固定频率超声波通过太阳能板时，引起太阳能板共振，使太阳能板上的玻璃介质产生极大的瞬时加速度，利用污垢和灰尘的惯性，将其抖落。</p>
+<p>（2）超声波振动清洗的方法：</p>
+<p>&ensp;&ensp;&ensp;&ensp;结构示意图如图一所示，在柜体中，直流电源与太阳能板接通，由逆变器转化为交流电后与超声波发生器相连，超声波发生器将电能转化为超声波信号^[4]^，通过传输电缆传送到超声波换能振动器，换能振动器将这一声波经变幅杆与振动头传送到太阳能板表面的玻璃板上，引起玻璃板共振，使被振松了的污染物及时脱离工件，达到清洗的目的。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image47.png" alt="图2.12 超声波振动清洁器"></p>
+<h3 id="2-4-3风机"><a href="#2-4-3风机" class="headerlink" title="2.4.3风机"></a><strong>2.4.3风机</strong></h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image48.png" alt="图2.13 风机"></p>
+<p>&ensp;&ensp;&ensp;&ensp;风机风量216m3&#x2F;h；功率85W；风压280Pa；电压220V&#x2F;380V；频率50Hz；重量2.6kg；尺寸175×110×220mm。对比选择：离心式风机的空气流量为数公斤至数十公斤每秒。亚音速离心式压气机的增压比约为4.5,超音速离心式压气机可达8～10，效率约为0.78。轴流式风机的空气流量为几公斤每秒到二百公斤每秒，单级增压比一般约为1.1～2.0，效率约为0.85～0.88。离心式压气机虽然效率略低，但增压比更大，且成本低，重量轻，所以此处我们选择离心式风机。</p>
+<h3 id="2-4-4通信模块"><a href="#2-4-4通信模块" class="headerlink" title="2.4.4通信模块"></a><strong>2.4.4通信模块</strong></h3><p>&ensp;&ensp;&ensp;&ensp;通信模块采用LTC2856IMS8芯片，该芯片采用+5V电源工作，其额定电流为900μＡ，它能将UART输出电平转换为RS485电平.该芯片有8个引脚，其内部含有1个接收器和1个驱动器。RO为接收器的输出端，接单片机的RX引脚；DI为驱动器的输入端，接单片机的TX引脚。RE是接收使能端，当RE&#x3D;0时，LTC2856IMS8芯片处于接收状态；DE是发送使能端，当DE&#x3D;1时。LTC2856IMS8芯片处于发送状态，RE和DE接单片机的RE引脚。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image49.png" alt="图2.14 LTC2856IMS8引脚图"></p>
+<h3 id="2-4-5电源模块"><a href="#2-4-5电源模块" class="headerlink" title="2.4.5电源模块"></a><strong>2.4.5电源模块</strong></h3><p>&ensp;&ensp;&ensp;&ensp;本设计选取蓄电池作为整个系统的储能模块，太阳能光伏发电板作为蓄电池的能量来源，为整套装置供电。设备使用导轨供电，两导轨分别为电源两级，节省了电缆的铺设费用，也避免了携带电源导致的设备自重过大。</p>
+<h2 id="2-5追光模块"><a href="#2-5追光模块" class="headerlink" title="2.5追光模块"></a><strong>2.5追光模块</strong></h2><p>&ensp;&ensp;&ensp;&ensp;本设计带光伏的双轴太阳能跟踪器，以便在白天跟随太阳。光伏发电为太阳能跟踪器供电（无需外部电源）。该模块包括：主控电路，显示接口电路，电源电路，LED显示电路，电压采集电路，舵机接口电路，独立按键电路，光敏模块采集电路。主控芯片采用STC15F2K60S2，XI、XO为外部晶振输入输出接口。装置采用了一个12M的无源晶振，为主控芯片提供时钟。该芯片内部自带时钟，所以不接外部晶振也行。但是内部的不如外部的稳定，所以我采用了外接时钟的方式。复位电路：复位端口需要采集到24个时钟周期以上的高电平脉冲，才会进行复位。所以我采用了一按键的形式，实现手动复位。</p>
+<p>&ensp;&ensp;&ensp;&ensp;信号采集电路，利用电位器对电池板输入的电压进行分压，以免流入单片机引脚电压过大，损坏单片机。单片机通过带有AD转换功能的引脚采集电池板输入的电压值。光敏电阻模块，直接输出一个数字量的信号送入单片机，单片机通过RIN1~4`引脚进行采集。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image50.png" alt="图2.15 主控电路图"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image51.png" alt="图2.16 信号采集图"></p>
+<h1 id="3-工作原理及性能分析"><a href="#3-工作原理及性能分析" class="headerlink" title="3 工作原理及性能分析"></a><strong>3 工作原理及性能分析</strong></h1><h2 id="3-1工作原理"><a href="#3-1工作原理" class="headerlink" title="3.1工作原理"></a><strong>3.1工作原理</strong></h2><p>①光伏板上有震动器，可带动光伏感震动。</p>
+<p>②光伏板上包括光敏传感器，雨雪传感器。</p>
+<p>③当检测光强弱，或者有雨雪时，光伏板震动，清洁度检测仪的风机启动，在导轨上来回运动一次，前一次运动与后一次运动的间隔至少10s,直到触发运动状态的条件消除，设备运动完成当前周期，回到原点后停止。</p>
+<h2 id="3-2-APP设计"><a href="#3-2-APP设计" class="headerlink" title="3.2 APP设计"></a><strong>3.2 APP设计</strong></h2><h3 id="3-2-1设计方案"><a href="#3-2-1设计方案" class="headerlink" title="3.2.1设计方案"></a><strong>3.2.1设计方案</strong></h3><p>&ensp;&ensp;&ensp;&ensp;APP采用Blynk物联网，可以查看当前光强数据和雨雪数据折现动态图，可切换自动模式和手动模式，手动模式下可控制震动器运动，清洁度检测仪在滑轨上左右滑动，风机启停。</p>
+<h3 id="3-2-2-APP成果图"><a href="#3-2-2-APP成果图" class="headerlink" title="3.2.2 APP成果图"></a><strong>3.2.2 APP成果图</strong></h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/SUN/image52.jpeg" alt="图2.17 APP交互界面" style="width:50%;" />
+
+<h1 id="4-主要创新点"><a href="#4-主要创新点" class="headerlink" title="4 主要创新点"></a><strong>4 主要创新点</strong></h1><p>&ensp;&ensp;&ensp;&ensp;①实现了光伏板的无水化清洁，对于西北部寒冷地区，无水清洁不受到季节及环境因素的影响。对于干旱地区和少降水地区，无水清洁可以节省大量水资源，绿色环保。</p>
+<p>&ensp;&ensp;&ensp;&ensp;②清洁时对光伏板面没有直接的物理接触，有效避免了清洁时对光伏板表面的机械磨损，延长了光伏板的使用寿命。</p>
+<p>&ensp;&ensp;&ensp;&ensp;③没有清洁材料作用在光伏板的表面，避免了清洁材料对其表面化学侵蚀。同时避免了化学洗涤产品的使用，减少对环境的污染。</p>
+<p>&ensp;&ensp;&ensp;&ensp;④实现了光伏板清洁的自动化，可以高效完成清洁，全天候工作，节省了人力物力。</p>
+<p>&ensp;&ensp;&ensp;&ensp;⑤整套装置的供电电源来自光伏板自身发电电能，无需外接电缆，节省了能源。</p>
+<p>&ensp;&ensp;&ensp;&ensp;⑥根据定时检测表明的清洁度，可以有效避免灰尘长期在表面累积成垢从而导致对表面的破坏。延长其使用寿命，提高光伏发电效率</p>
+<h1 id="5-效益与应用前景"><a href="#5-效益与应用前景" class="headerlink" title="5 效益与应用前景"></a><strong>5 效益与应用前景</strong></h1><p>&ensp;&ensp;&ensp;&ensp;在所有清洗方式中，清洗成本大体可分为：设备成本和消耗成本。超声波清洗设备使用寿命约为10年，除了设备成本高于手工清洗和有机溶剂刷洗外，低于高压水射流清洗，对于消耗成本，以有效尺寸600mm×400mm×350mm，功率为1KW价格约为1万元的超声波清洗机为例工作一小时，耗电一度，费用约仅为0.5元，清洗剂1公斤价格约为20元，反复使用20~50小时相当于0.4-1元每小时。且装置可以对一定范围内的光伏板同时清洗，因此超声波清洁不仅效果好，消耗成本也低。</p>
+<p>&ensp;&ensp;&ensp;&ensp;在西北自然环境恶劣的地区，风沙多，水资源紧缺，光伏板清理困难且常年积垢，而此装置不需要水源，有效避免了水源浪费问题，进而提升其经济效益，且绿色环保。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]徐巧年,魏显文.西北地区灰尘对光伏组件发电效率的影响及除尘方法的探索[J].产业与科技论坛,2016,23:1-2</p>
+<p>[2]周晓明,朱周洪,陈军松等. 光反射型光伏板清洁度检测仪设计[J].<br>中国计量学院学报,2016,27(1):2-3</p>
+<p>[3]任金莲,张明铎,牛勇.超声波清洗的一种新方法[J].陕西师范大学学报(自然科学版),2002,30(2):3-4</p>
+<p>[4]东北电力大学.一种太阳能光伏板表面超声波防垢除垢系统[P].中国专利:201610227243.8,2016—06-08.</p>
+<p>[5]高德东,孟广双,王<br>珊等.荒漠环境中电池板表面灰尘颗粒力学模型建立[J].可再生能源,2015,33(11)</p>
+<p>[6]高德东,孟广双,王<br>珊等.荒漠地区电池板表面灰尘特性分析[J].可再生能源.2015,33(11)</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Sue_syk</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2024/06/01/SUN/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2024/06/01/SUN/')">光伏先锋——基于超声波振动的轻量化光伏板清洁装置</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2024/06/01/SUN/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=光伏先锋——基于超声波振动的轻量化光伏板清洁装置&amp;url=http://example.com/2024/06/01/SUN/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Sue_syk</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>竞赛论文<span class="tagsPageCount">3</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/01/3D/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">3Dshow</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/29/love/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">共享关爱—探索“共享儿女”养老模式的创新之路</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/06/01/cable/" title="缆脉智检——基于SSTDR的全生命周期电缆智能诊断仪"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-01</div><div class="title">缆脉智检——基于SSTDR的全生命周期电缆智能诊断仪</div></div></a></div><div><a href="/2025/07/07/plane/" title="“渊鸿”水空智巡系统——突破介质边界的水空两栖智能巡检设备"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-07</div><div class="title">“渊鸿”水空智巡系统——突破介质边界的水空两栖智能巡检设备</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%A0%94%E5%88%B6%E8%83%8C%E6%99%AF%E5%8F%8A%E6%84%8F%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">1 研制背景及意义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">2 设计方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E6%80%BB%E4%BD%93%E6%9C%BA%E6%A2%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1总体机械结构设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E6%8E%A7%E5%88%B6%E6%A8%A1%E5%9D%97"><span class="toc-number">2.2.</span> <span class="toc-text">2.2控制模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 驱动模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1步进电机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2%E6%B8%85%E6%B4%81%E5%BA%A6%E6%A3%80%E6%B5%8B%E8%A3%85%E7%BD%AE"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2清洁度检测装置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E6%B8%85%E6%B4%81%E6%A8%A1%E5%9D%97"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 清洁模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1%E6%9D%BF%E9%9D%A2%E7%81%B0%E5%B0%98%E5%88%86%E6%9E%90"><span class="toc-number">2.4.1.</span> <span class="toc-text">2.4.1板面灰尘分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%B8%85%E6%B4%81%E8%A3%85%E7%BD%AE"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.4.2超声波清洁装置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3%E9%A3%8E%E6%9C%BA"><span class="toc-number">2.4.3.</span> <span class="toc-text">2.4.3风机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-4%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97"><span class="toc-number">2.4.4.</span> <span class="toc-text">2.4.4通信模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-5%E7%94%B5%E6%BA%90%E6%A8%A1%E5%9D%97"><span class="toc-number">2.4.5.</span> <span class="toc-text">2.4.5电源模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5%E8%BF%BD%E5%85%89%E6%A8%A1%E5%9D%97"><span class="toc-number">2.5.</span> <span class="toc-text">2.5追光模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3 工作原理及性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">3.1工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-APP%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 APP设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1设计方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-APP%E6%88%90%E6%9E%9C%E5%9B%BE"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 APP成果图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%B8%BB%E8%A6%81%E5%88%9B%E6%96%B0%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">4 主要创新点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%95%88%E7%9B%8A%E4%B8%8E%E5%BA%94%E7%94%A8%E5%89%8D%E6%99%AF"><span class="toc-number">5.</span> <span class="toc-text">5 效益与应用前景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/07/hello-world/" title="Hello World">Hello World</a><time datetime="2025-08-07T01:47:55.085Z" title="发表于 2025-08-07 09:47:55">2025-08-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/07/plane/" title="“渊鸿”水空智巡系统——突破介质边界的水空两栖智能巡检设备">“渊鸿”水空智巡系统——突破介质边界的水空两栖智能巡检设备</a><time datetime="2025-07-07T04:00:00.000Z" title="发表于 2025-07-07 12:00:00">2025-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/01/cable/" title="缆脉智检——基于SSTDR的全生命周期电缆智能诊断仪">缆脉智检——基于SSTDR的全生命周期电缆智能诊断仪</a><time datetime="2025-06-01T04:00:00.000Z" title="发表于 2025-06-01 12:00:00">2025-06-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/01/achievement/" title="个人简历">个人简历</a><time datetime="2025-05-01T04:00:00.000Z" title="发表于 2025-05-01 12:00:00">2025-05-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/29/love/" title="共享关爱—探索“共享儿女”养老模式的创新之路">共享关爱—探索“共享儿女”养老模式的创新之路</a><time datetime="2024-10-29T04:00:00.000Z" title="发表于 2024-10-29 12:00:00">2024-10-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Sue_syk" target="_blank">Sue_syk</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3Dshow/" style="font-size: 0.88rem;">3Dshow<sup>1</sup></a><a href="/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/" style="font-size: 0.88rem;">媒体报道<sup>1</sup></a><a href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" style="font-size: 0.88rem;">竞赛论文<sup>3</sup></a><a href="/tags/%E7%AE%80%E5%8E%86/" style="font-size: 0.88rem;">简历<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Sue_syk 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
