@@ -20,8 +20,8 @@ http://example.com/manifest.json
 http://example.com/categories/index.html
 http://example.com/link/index.html
 http://example.com/tags/index.html
-http://example.com/img/SUN/1.html
 http://example.com/img/achievement/1.html
+http://example.com/img/SUN/1.html
 http://example.com/
 http://example.com/tags/3Dshow/
 http://example.com/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/
