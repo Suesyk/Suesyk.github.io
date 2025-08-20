@@ -104,19 +104,6 @@
     
     
     <entry>
-      <title>问题暂存</title>
-      <link href="/2024/06/01/problem/"/>
-      <url>/2024/06/01/problem/</url>
-      
-        <content type="html"><![CDATA[<h1 id="博文Post-Front-matter"><a href="#博文Post-Front-matter" class="headerlink" title="博文Post Front-matter"></a>博文Post Front-matter</h1><p>title: 未解决问题<br>date: 2025-06-01 00:00:00</p><h1 id="文章最后更新时间updated"><a href="#文章最后更新时间updated" class="headerlink" title="文章最后更新时间updated:"></a>文章最后更新时间updated:</h1><p>tags:<br>categories:<br>keywords:<br>description:</p><h1 id="top-img-“-img-default-cover-jpg”"><a href="#top-img-“-img-default-cover-jpg”" class="headerlink" title="top_img: “/img/default_cover.jpg”"></a>top_img: “/img/default_cover.jpg”</h1><h1 id="文章缩略图cover"><a href="#文章缩略图cover" class="headerlink" title="文章缩略图cover:"></a>文章缩略图cover:</h1><h1 id="copyright-author-Sue-Yukai"><a href="#copyright-author-Sue-Yukai" class="headerlink" title="copyright_author: Sue Yukai"></a>copyright_author: Sue Yukai</h1><h1 id="copyright-author-href-https-suesyk-github-io-about"><a href="#copyright-author-href-https-suesyk-github-io-about" class="headerlink" title="copyright_author_href: https://suesyk.github.io/about/"></a>copyright_author_href: <a href="https://suesyk.github.io/about/">https://suesyk.github.io/about/</a></h1><h1 id="原文章链接copyright-url"><a href="#原文章链接copyright-url" class="headerlink" title="原文章链接copyright_url:"></a>原文章链接copyright_url:</h1><p>mathjax: true</p><h1 id="aplayer"><a href="#aplayer" class="headerlink" title="aplayer:"></a>aplayer:</h1><p>highlight_shrink: false<br>aside: true</p><h1 id="第几位次top-group-index-1"><a href="#第几位次top-group-index-1" class="headerlink" title="第几位次top_group_index: 1"></a>第几位次top_group_index: 1</h1><p>background: “#fff”<br>ai:</p><h2 id="本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。"><a href="#本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。" class="headerlink" title="  - 本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。"></a>  - 本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。</h2><h1 id="主页底部导航栏"><a href="#主页底部导航栏" class="headerlink" title="主页底部导航栏"></a>主页底部导航栏</h1><p>参考：<a href="https://blog.lixiaomu.fun/">https://blog.lixiaomu.fun/</a></p><h1 id="首页字数统计"><a href="#首页字数统计" class="headerlink" title="首页字数统计"></a>首页字数统计</h1><p>额外配置</p><h1 id="标签使用"><a href="#标签使用" class="headerlink" title="标签使用"></a>标签使用</h1><p><a href="https://blog.anheyu.com/posts/d50a.html">https://blog.anheyu.com/posts/d50a.html</a></p><h1 id="评论弹幕"><a href="#评论弹幕" class="headerlink" title="评论弹幕"></a>评论弹幕</h1><h1 id="开发者选项诊断"><a href="#开发者选项诊断" class="headerlink" title="开发者选项诊断"></a>开发者选项诊断</h1><h1 id="preloader加载动画"><a href="#preloader加载动画" class="headerlink" title="preloader加载动画"></a>preloader加载动画</h1><h1 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h1><h1 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h1><h1 id="hexo-swpp"><a href="#hexo-swpp" class="headerlink" title="hexo-swpp"></a>hexo-swpp</h1><h1 id="Open-Graph-meta"><a href="#Open-Graph-meta" class="headerlink" title="Open_Graph_meta"></a>Open_Graph_meta</h1><h1 id="进阶配置"><a href="#进阶配置" class="headerlink" title="进阶配置"></a>进阶配置</h1><h2 id="Twikoo"><a href="#Twikoo" class="headerlink" title="Twikoo"></a>Twikoo</h2><h1 id="魔改配置"><a href="#魔改配置" class="headerlink" title="魔改配置"></a>魔改配置</h1><h1 id="clock"><a href="#clock" class="headerlink" title="clock"></a>clock</h1><h1 id="valine评论"><a href="#valine评论" class="headerlink" title="valine评论"></a>valine评论</h1>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>光伏先锋——基于超声波振动的轻量化光伏板清洁装置</title>
       <link href="/2024/06/01/SUN/"/>
       <url>/2024/06/01/SUN/</url>
@@ -136,6 +123,19 @@
             <tag> 竞赛论文 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>问题暂存</title>
+      <link href="/2024/06/01/problem/"/>
+      <url>/2024/06/01/problem/</url>
+      
+        <content type="html"><![CDATA[<h1 id="博文Post-Front-matter"><a href="#博文Post-Front-matter" class="headerlink" title="博文Post Front-matter"></a>博文Post Front-matter</h1><p>title: 未解决问题<br>date: 2025-06-01 00:00:00</p><h1 id="文章最后更新时间updated"><a href="#文章最后更新时间updated" class="headerlink" title="文章最后更新时间updated:"></a>文章最后更新时间updated:</h1><p>tags:<br>categories:<br>keywords:<br>description:</p><h1 id="top-img-“-img-default-cover-jpg”"><a href="#top-img-“-img-default-cover-jpg”" class="headerlink" title="top_img: “/img/default_cover.jpg”"></a>top_img: “/img/default_cover.jpg”</h1><h1 id="文章缩略图cover"><a href="#文章缩略图cover" class="headerlink" title="文章缩略图cover:"></a>文章缩略图cover:</h1><h1 id="copyright-author-Sue-Yukai"><a href="#copyright-author-Sue-Yukai" class="headerlink" title="copyright_author: Sue Yukai"></a>copyright_author: Sue Yukai</h1><h1 id="copyright-author-href-https-suesyk-github-io-about"><a href="#copyright-author-href-https-suesyk-github-io-about" class="headerlink" title="copyright_author_href: https://suesyk.github.io/about/"></a>copyright_author_href: <a href="https://suesyk.github.io/about/">https://suesyk.github.io/about/</a></h1><h1 id="原文章链接copyright-url"><a href="#原文章链接copyright-url" class="headerlink" title="原文章链接copyright_url:"></a>原文章链接copyright_url:</h1><p>mathjax: true</p><h1 id="aplayer"><a href="#aplayer" class="headerlink" title="aplayer:"></a>aplayer:</h1><p>highlight_shrink: false<br>aside: true</p><h1 id="第几位次top-group-index-1"><a href="#第几位次top-group-index-1" class="headerlink" title="第几位次top_group_index: 1"></a>第几位次top_group_index: 1</h1><p>background: “#fff”<br>ai:</p><h2 id="本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。"><a href="#本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。" class="headerlink" title="  - 本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。"></a>  - 本教程介绍了如何在博客中安装基于Hexo主题的安知鱼主题，并提供了安装、应用主题、修改配置文件、本地启动等详细步骤及技术支持方式。教程的内容针对最新的主题版本进行更新，如果你是旧版本教程会有出入。</h2><h1 id="主页底部导航栏"><a href="#主页底部导航栏" class="headerlink" title="主页底部导航栏"></a>主页底部导航栏</h1><p>参考：<a href="https://blog.lixiaomu.fun/">https://blog.lixiaomu.fun/</a></p><h1 id="首页字数统计"><a href="#首页字数统计" class="headerlink" title="首页字数统计"></a>首页字数统计</h1><p>额外配置</p><h1 id="标签使用"><a href="#标签使用" class="headerlink" title="标签使用"></a>标签使用</h1><p><a href="https://blog.anheyu.com/posts/d50a.html">https://blog.anheyu.com/posts/d50a.html</a></p><h1 id="评论弹幕"><a href="#评论弹幕" class="headerlink" title="评论弹幕"></a>评论弹幕</h1><h1 id="开发者选项诊断"><a href="#开发者选项诊断" class="headerlink" title="开发者选项诊断"></a>开发者选项诊断</h1><h1 id="preloader加载动画"><a href="#preloader加载动画" class="headerlink" title="preloader加载动画"></a>preloader加载动画</h1><h1 id="Pjax"><a href="#Pjax" class="headerlink" title="Pjax"></a>Pjax</h1><h1 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h1><h1 id="hexo-swpp"><a href="#hexo-swpp" class="headerlink" title="hexo-swpp"></a>hexo-swpp</h1><h1 id="Open-Graph-meta"><a href="#Open-Graph-meta" class="headerlink" title="Open_Graph_meta"></a>Open_Graph_meta</h1><h1 id="进阶配置"><a href="#进阶配置" class="headerlink" title="进阶配置"></a>进阶配置</h1><h2 id="Twikoo"><a href="#Twikoo" class="headerlink" title="Twikoo"></a>Twikoo</h2><h1 id="魔改配置"><a href="#魔改配置" class="headerlink" title="魔改配置"></a>魔改配置</h1><h1 id="clock"><a href="#clock" class="headerlink" title="clock"></a>clock</h1><h1 id="valine评论"><a href="#valine评论" class="headerlink" title="valine评论"></a>valine评论</h1>]]></content>
+      
+      
       
     </entry>
     
