@@ -263,13 +263,6 @@
 
   
   <url>
-    <loc>http://example.com/tags/3Dshow/</loc>
-    <lastmod>2025-08-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -277,14 +270,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
+    <loc>http://example.com/tags/3Dshow/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%AD%A6%E6%9C%AF%E8%B5%84%E6%BA%90/</loc>
+    <loc>http://example.com/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -304,14 +297,14 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>http://example.com/categories/3Dshow/</loc>
+    <loc>http://example.com/tags/%E5%AD%A6%E6%9C%AF%E8%B5%84%E6%BA%90/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+
   
   <url>
     <loc>http://example.com/categories/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/</loc>
@@ -321,14 +314,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
+    <loc>http://example.com/categories/3Dshow/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E5%AD%A6%E6%9C%AF%E8%B5%84%E6%BA%90/</loc>
+    <loc>http://example.com/categories/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -343,6 +336,13 @@
   
   <url>
     <loc>http://example.com/categories/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E5%AD%A6%E6%9C%AF%E8%B5%84%E6%BA%90/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
