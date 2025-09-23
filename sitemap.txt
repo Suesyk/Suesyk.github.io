@@ -1,3 +1,7 @@
+http://example.com/2023/09/01/lesson-1-9/
+http://example.com/2023/09/01/lesson-1-8/
+http://example.com/2023/09/01/lesson-1-12/
+http://example.com/2024/10/01/daily/
 http://example.com/2025/09/01/resume/
 http://example.com/2024/10/29/love/
 http://example.com/2025/07/16/country/
@@ -6,15 +10,12 @@ http://example.com/2024/03/01/3D/
 http://example.com/2023/09/01/lesson-1-11/
 http://example.com/2023/09/01/lesson-1-7/
 http://example.com/2023/09/01/lesson-1-10/
-http://example.com/2023/09/01/lesson-1-9/
-http://example.com/2023/09/01/lesson-1-8/
 http://example.com/2023/09/01/lesson-1-6/
 http://example.com/2023/09/01/lesson-1-2/
 http://example.com/2023/09/01/lesson-1-1/
 http://example.com/2023/09/01/lesson-1-5/
 http://example.com/2023/09/01/lesson-1-4/
 http://example.com/2023/09/01/lesson-1-3/
-http://example.com/2024/10/01/daily/
 http://example.com/2022/09/18/ssh_problem/
 http://example.com/2022/10/06/pages/
 http://example.com/2022/09/03/H2/
