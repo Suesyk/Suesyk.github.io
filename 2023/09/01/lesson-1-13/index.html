@@ -1,0 +1,910 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>STM32第一部分学习——电机PID闭环控制 | Sue_syk</title><meta name="keywords" content="学习手册"><meta name="author" content="Sue_syk"><meta name="copyright" content="Sue_syk"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="STM32第一部分学习——电机PID闭环控制"><meta name="application-name" content="STM32第一部分学习——电机PID闭环控制"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="STM32第一部分学习——电机PID闭环控制"><meta property="og:url" content="http://example.com/2023/09/01/lesson-1-13/index.html"><meta property="og:site_name" content="Sue_syk"><meta property="og:description" content="学习手册第一章：STM32第一部分学习——电机PID闭环控制"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://s21.ax1x.com/2025/08/19/pVBdbLt.jpg?_r_=65768bf0-126e-49ce-69b0-302ceb902227"><meta property="article:author" content="Sue_syk"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://s21.ax1x.com/2025/08/19/pVBdbLt.jpg?_r_=65768bf0-126e-49ce-69b0-302ceb902227"><meta name="description" content="学习手册第一章：STM32第一部分学习——电机PID闭环控制"><link rel="shortcut icon" href="https://s21.ax1x.com/2025/08/17/pV0q9un.png"><link rel="canonical" href="http://example.com/2023/09/01/lesson-1-13/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！","backTitle":"♪(^∇^*)欢迎欢迎！"},
+  LA51: {"enable":true,"ck":"3NBGoZNEpFzHHzmS","LingQueMonitorID":"3NBGoZNEpFzHHzmS"},
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"","mailMd5":""},
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Sue_syk","link":"链接: ","source":"来源: Sue_syk","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Sue_syk',
+  title: 'STM32第一部分学习——电机PID闭环控制',
+  postAI: '实验效果：学习手册第一章：STM32第一部分学习——电机PID闭环控制',
+  pageFillDescription: '十二、电机PID闭环控制, （1）实验效果展示, （2）PID算法的原理和用法, （3）比例项P, （4）微分项D, （5）积分项I, （6）位置式PID和增量式PID, （7）电机速度闭环控制及调参方法十二电机闭环控制实验效果展示实验目的电机速度闭环实验效果电机通过增量式算法稳定在规定转速上并实时显示上面的意思是我规定让电机的速度是那电机就一定是误差在以内先看这次的主函数四个定时器全用了定时器用来生成控制电机定时器生成的定时器中断计算定时器生成的定时器中断电机编码器测速定时器正交解码其实定时器和定时器里的代码完全可以写一起比如只用定时器的中断里面同时进行计算和编码器测速定时器省下不用这样可以节省一个定时器资源节约出来的这个定时器我们可以用来控制舵机可以用来做计时用等上面是里的代码初始化了很多参数下面还有几个公式看不懂那么我们下面先来详细学习一下算法算法的原理和用法算法的百度百科官方解释比例积分微分算法是一种常用的反馈控制算法广泛应用于自动控制系统中它通过测量系统的误差目标值与实际值之间的差异来调整控制器的输出以使系统的响应满足特定的要求百度百科看不懂很正常下面我来举例子上图是一个小人在控制阀门的开度保持水管输出的流量稳定在升每秒如果没有任何外在因素小人只需要调节一次确保输出流量是就不用再管了上图小人吃完饭回来管子内壁已经长了很多苔藓堵住了部分水流流量只有了小人赶紧调节阀门结果阀门一开大把苔藓冲走了一大部分流量一下成了了小人更着急了又把阀门调小好不容易流量又回归正常了上图但是这样的突发事件越来越多各种各样的外界因素让他一秒都闲不下来它需要不断调节阀门才能保证输出是这时小人自己就是个控制器小人的脑子里就已经装着算法了这其实就是一个控制系统了只不过小人不像它不能小时检测调节阀门它会累死但不会累终于有一天小人崩溃了他要寻求技术支持小人定制了一套自动流量调节系统由单片机控制器控制阀门自动调节流量代替了小人来手动调节并且在出水口处装了流量计控制器自主观测流量大小这样无论中途经历了什么干扰都不重要最终输出一直都被控制在所以这一节我们学的就是这套控制系统的搭建我第一次知道算法是在站看到一个两轮的平衡小车小车只有两个轮子为什么能立住不倒呢经过了解我发现平衡小车上有一个传感器叫做陀螺仪它可以检测小车实时的俯仰角上图绿色的标注就是飞机的俯仰角俯仰角则飞机后仰爬升所以正常的飞行状态就是俯仰角始终保持在平衡小车跟这个是完全一样的需要将俯仰角保持在陀螺仪传感器把俯仰角数据传给单片机然后单片机将数据带入到算法中经过运算之后将运算结果用于控制占空比进而控制平衡小车的电机运动来修正俯仰角与上图举的小人控制水流的例子不同上图系统的主控制器是小人小人是肉身凡胎人类的极限也不过是每秒检查一次水流并调节一次阀门而单片机中的算法执行周期非常短可以做到秒执行一次观测流量并调节阀门从而可以非常高效不断运行对平衡小车来说以每秒一千次的调节速度不断纠正当前的俯仰角使其一直保持在小车就能在两个轮子不断调节下立住不倒了控制就是非常典型的反馈控制什么是反馈控制高中生物应该是学过温度高了下丘脑就会发出激素让人出汗降温散热温度低了下丘脑就会发出另一种激素让人打冷战维持体温这里一模一样我们看上图还是以平衡小车为例传感器就是陀螺仪执行器就是电机每次修正后的俯仰角都会反馈给传感器再作为输入参数周而复始进行不断的调节这就是反馈控制另外上图这一个流程图是一个封闭的环状流程所以控制又是一种闭环控制那什么是开环控制呢我举个例子五路红外循迹小车就是闭环控制因为它寻迹的传感器就是红外寻迹模块执行器就是电机符合上面的框图所以可以使用单片机内部的算法自动进行巡线而遥控小车就是开环控制用遥控杆手动控制小车也能完成巡线但是因为遥控小车没有巡线的传感器只有执行器也就是电机小车完全由手动操控无法自主巡线再举个例子比如这一节实验的现象是电机通过算法自稳定在旋转编码器作为速度传感器实时反馈速度信息这就是闭环控制那假如我不用控制就只输出固定的占空比也想达到我就需要反复调试占空比大小直到调节到为止这就是开环控制再举个例子假如我们洗澡的时候水温控制器是自动控制那洗澡水只需要打开水龙头就一直稳定在度不需要我们手动调节这就是闭环控制如果是机械调节水温那我们就要手动多次调节热冷开关直到水温合适为止这就是开环控制比例项首先我们上一个极简公式总要学点理论的不要排斥公式充分理解下面公式花不了你多少时间还能帮你更好实操位置式最容易理解的公式首先不要怕这个算法非常简单算法当然就有三个核心参数而且三个参数是确定不变的也就是在自动控制中这三个参数最初设定是多少就永远是多少上式中就是输出值就是误差值作为输入我们把三个参数拆开看先分析令和都为公式就变成了是比例系数剩下的这个公式就是纯控制也就是纯比例控制对这个公式的粗俗的理解就是面多了加水水多了加面不断调节下面开始举例子下图是一个会漏水的水缸目前里面水位为要求每秒一次加排水目标是缸的水位稳定在水多了就排水少了就加但是水缸会漏水每秒水位下降不定加水按照纯控制算法为了方便计算我们把原第四条要求修改一下但是水缸会漏水每秒水位固定下降按照纯控制算法首先设置的参数设第一次加水理想现实所以根据计算结果把水位加到漏水所以第一次加水就变成了下图这样第二次加水漏就加就是下面这样误差进一步减小第三次加水漏就加的水所以第四次第五次第次加水我们如果真的算一算会发现得到水位的变化曲线如下手绘图所示我们发现随着纯控制的不断修正水位会无限接近于但是永远不会到达因为假设现在水位是不增不减所以当时间趋近于无穷大时水位就一直在此时的误差就是静态误差我们再重新分析这次让还是每秒漏水第一次加水当前水位第二次加水当前水位第三次加水当前水位第四次加水当前水位这就很搞笑了这说明值不可以取过大超过一定的值之后这个系统就不再稳定了也就是不收敛了这算法要是真应用上不知道要浪费多少水我们再重新分析降低值这次取还是每秒漏水第一次加水当前水位第二次加水当前水位第三次加水当前水位第四次加水当前水位第五次加水当前水位第六次加水当前水位第七次加水当前水位第八次加水注意计算到这里我们就发现了好像还是不能加满我们发现随着加水次数的增加水位变化大致如下图所示一段时间后水接近但还是跟第一次一样还是永远到达不了有无法消除的静态误差第三次的纯控制还有其他缺点比如超调过大尤其是第一次加水加水量会超过标准水位很多也就是图像会有一个很大的波动这个波动值如下图称为超调量这个超调量简称超调是不利于稳定控制的我们要让它尽量小那有什么办法呢如果太小会让水位达到目标值过慢如果太大会系统失稳取正好的话需要多次尝试而且每秒固定漏水是理想情况真实情况是漏水在不等最小漏水量是也就是这个静态误差会一直存在以及其他外界不确定性影响控制效果也会跟着变纯控制介绍完了总结一下比例控制越大接近目标值的速度越快但是提升控制速度的代价是超调和震荡会随着的增大而增大过大会使系统失稳微分项这时候就要引入了微分上加一个点代表是的微分微分离散化之后就是是这一次的误差是上一次的误差于是公式就变成了为什么要离散化因为单片机运行是离散执行的一句代码可能微秒执行一次性能更好的单片机可能微秒执行一次但时间间隔终究是离散的不是连续的所以我们也要将公式离散化去适应单片机的离散系统我们取得到下表次数参数当前水位当前水位当前水位当前水位当前水位当前水位当前水位当前水位可以看到有项控制的水位上升更平缓所以项就相当于一个阻尼项可以让控制更加平缓不会有过猛过冲的情况同理项最重要的作用就是消除超调量如下图加入项前加入项后微分控制效果手绘图控制中项作为阻尼项可以有效消除超调量现在看起来控制效果已经非常好了吧快速性稳定性都有了解决快速性解决稳定性但我们忘了前面一直提的一个误差静态误差也就是现在还没有准确性可以看到实际值一直离目标值差一点点怎么办积分项积分项就是专门来消除静态误差的加入积分项就全了跟前面一样把公式离散化其中就是自始至终所有误差的累加原先每秒的漏水静态误差始终无法解决但是有了积分项之后把每次静态误差累积随着累积的增多积分项的作用会越来越明显增大注水量从而消除这个静态误差最后的效果如下静态误差被消除了快速性稳定性准确性兼备但是积分项过大也会引起超调增大以及失稳而且过大会导致系统滞后也就是调节效果慢半拍降低系统快速性位置式和增量式刚刚我们讲的公式就是位置式上面的这个公式就是连续的公式下面我们要把它离散化去适应单片机的离散系统现在我们上难度把公式写得标准一点离散位置式公式这是本节最核心的公式没有之一我们其实是最常用位置式也就是没有任何变种的基础算法代表第次调节就是本次的输出值这个公式本质跟上面的连续公式是完全一样的可以自己仔细去揣摩一下这个公式那什么是增量式呢增量的意思就是本次输出量和上次输出量的差值比如第次那上次就是次两式一减就是增量式注有数学恐惧的同学一定要硬着头皮看懂这几个公式这是最简单的算法了讲得也够详细拿这个做一次理解训练以后才能有算法的提升是输出值的增量也就是上一次的输出值加上就是这一次的输出值这样增量式就只需要记录前两次的误差而不用记录从头到尾的累积误差所以这两种公式有什么区别吗我们应该怎么选择合适的说一下两种的应用场合位置式控制器适用于需要快速响应和精确控制的场景比如在电机控制中需要控制电机的转速或位置使其能够快速响应并准确控制这时可以使用位置式控制器又如在温度控制中需要控制温度的精度和稳定性这时也可以使用位置式控制器同时位置式中项是会产生滞后增加准确性的作用为了系统的快速性有可能项直接不用只用控制增量式控制器适用于需要较强稳定性和对测量噪声较高的场景比如在机器人控制中需要控制机器人的运动轨迹这时可以使用增量式控制器因为机器人在运动过程中往往受到各种干扰如摩擦力惯性力等增量式控制器对这些干扰有较强的稳定性又如在液位控制中需要控制液位的高度和稳定性这时也可以使用增量式控制器因为在液位测量中测量信号通常存在一定的噪声和波动增量式控制器可以较好地抵抗这些干扰最后给出代码首先是位置式上次的误差本次的误差累计的误差输出值获得本次误差获得累加误差位置式公式对输出值进行限幅输出相比之前讲的理论模型实际的代码多了红色字体的输出限幅这一点是非常有必要的因为三个参数是要多次调试才能逐渐达到理想控制效果如果刚开始调试效果不好导致系统失稳如果没有输出限幅就会对系统造成毁灭性打击增量式代码上上次的误差上次的误差本次的误差参数参数参数输出值更新上上次的误差更新上次的误差更新本次误差增量式的公式得到输出值对输出值进行限幅输出注意到不同了么位置式的输出值就是输出值但是增量式的输出值是上一次输出值的增量电机速度闭环控制及调参方法铺垫了这么多终于要进入正题了搞我们的电机速度闭环请先下载代码然后通读所有代码理解算法的参数获取的流程是怎样进行的以及电机的控制是对前几节内容的复习速度闭环我们使用的是增量式因为我们需要的是更稳定的控制效果使速度稳定在预定的而不是快速灵活的控制效果烧录代码后电机应该已经可以稳定在因为参数我已经调试好了那么你在调试的时候应该怎么调参呢把三个参数都调成先调从开始缓慢增大比如先让观察速度变化一旦电机一上电速度超过了目标值比如说明有超调了这时候快速性已经没问题了然后慢慢增大增加阻尼减小超调稍微增大观察速度变化让电机上电后快速稳定在即参数调试完成速度闭环控制中积分项的作用不大因为我发现并没有静态误差就没有调积分项网上还有很多的快速调参方法比如在线调参软件呀还能在电脑上画图呀电脑画图需要我们学串口通信也就是第三章第一节的才可以这一节我们观测速度全靠屏的这个数值看不到实际速度变化曲线其实有点难受但是这样也让我们早一点接触到了算法并且算法会作为平衡小车的核心算法而调平衡小车的时候是不需要电脑绘图就能调好的不必担心比如平衡小车的直立环跟这个电机速度环是几乎完全一样的电机速度环是增量式更追求稳定平衡车直立环是位置式更追求快速电机速度环输入的是速度误差平衡车直立环输入的是俯仰角误差电机速度环目标速度值是只是本次实验平衡车直立环目标角度值是小车水平综上调参方法和算法框架都是几乎一致的本节课的两个练习题仿照电机速度闭环代码修改为电机的位置闭环提示比如让电机转轴停留在一个固定位置或者每秒转轴转动像舵机那样子应该选用位置式因为电机目标位置要时刻变化追求快速性灵活性仿照电机速度闭环代码和之前的红外寻迹代码修改为寻迹小车的寻迹提示红外寻迹传感器不会直接传回误差信息就像编码器实质是测位置不是测速一样寻迹的误差值生成已经在中的函数完成了请尝试把代码复制过去完成位置式寻迹因为寻迹要求快速性强',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-24 10:29:25',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3NBGoZNEpFzHHzmS/quote.js?theme=0&col=true&f=12&badge=icon_0&icon=left&display=1,1,0,0,0,0,1,1"></script><link rel="stylesheet" href="/css/project.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://s21.ax1x.com/2025/08/19/pVBwAoT.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">博客</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://suesyk.github.io/" title="主页"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="主页"/><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" href="javascript:toRandomPost()" title="随便逛逛"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="随便逛逛"/><span class="back-menu-item-text">随便逛逛</span></a><a class="back-menu-item" href="/archives/" title="时间轴"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="时间轴"/><span class="back-menu-item-text">时间轴</span></a><a class="back-menu-item" href="/essay/" title="即刻短文"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="即刻短文"/><span class="back-menu-item-text">即刻短文</span></a><a class="back-menu-item" href="/comments/" title="留言板"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="留言板"/><span class="back-menu-item-text">留言板</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">服务</div><div class="back-menu-list"><a class="back-menu-item" href="/bangumis/" title="番剧"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wow.webp" alt="番剧"/><span class="back-menu-item-text">番剧</span></a><a class="back-menu-item" href="/music/" title="音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wow.webp" alt="音乐"/><span class="back-menu-item-text">音乐</span></a><a class="back-menu-item" href="/album/" title="相册"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wow.webp" alt="相册"/><span class="back-menu-item-text">相册</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">导航</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://suesyk.github.io/guihua/study.html" title="自习室"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/happy.webp" alt="自习室"/><span class="back-menu-item-text">自习室</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://suesyk.github.io/guihua/guihua.html" title="考研规划"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/happy.webp" alt="考研规划"/><span class="back-menu-item-text">考研规划</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://aidn.jp/mikutap/" title="放松一下"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/happy.webp" alt="放松一下"/><span class="back-menu-item-text">放松一下</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Sue_syk</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 统计</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/2024/10/01/daily/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 日记</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 藏宝阁</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/collect/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 足迹阁</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/project/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 待办录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 本站</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://readhub.cn/daily"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 每日早报</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于我</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wechat.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/qq.jpg" target="_blank"><img class="post-qr-code-img" alt="QQ" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/qq.jpg"/></a><div class="post-qr-code-desc">QQ</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3Dshow/" style="font-size: 1.05rem;">3Dshow<sup>1</sup></a><a href="/tags/github/" style="font-size: 1.05rem;">github<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" style="font-size: 1.05rem;">个人简历<sup>1</sup></a><a href="/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/" style="font-size: 1.05rem;">媒体报道<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" style="font-size: 1.05rem;">学习手册<sup>13</sup></a><a href="/tags/%E5%AD%A6%E6%9C%AF%E8%B5%84%E6%BA%90/" style="font-size: 1.05rem;">学术资源<sup>1</sup></a><a href="/tags/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/" style="font-size: 1.05rem;">毕设准备<sup>1</sup></a><a href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" style="font-size: 1.05rem;">竞赛论文<sup>3</sup></a><a href="/tags/%E9%98%A1%E9%99%8C%E8%8C%B6%E6%97%85/" style="font-size: 1.05rem;">阡陌茶旅<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" itemprop="url">学习手册</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>学习手册</span></a></span></div></div><h1 class="post-title" itemprop="name headline">STM32第一部分学习——电机PID闭环控制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-08-31T16:00:13.000Z" title="发表于 2023-09-01 00:00:13">2023-09-01</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-09-24T02:29:25.507Z" title="更新于 2025-09-24 10:29:25">2025-09-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.9k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="STM32第一部分学习——电机PID闭环控制"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为山西"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>山西</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/09/01/lesson-1-13/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2023/09/01/lesson-1-13/" itemprop="commentCount"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://s21.ax1x.com/2025/08/19/pVBdbLt.jpg?_r_=65768bf0-126e-49ce-69b0-302ceb902227"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">AnZhiYu GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2023/09/01/lesson-1-13/"><header><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" itemprop="url">学习手册</a><a href="/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" tabindex="-1" itemprop="url">学习手册</a><h1 id="CrawlerTitle" itemprop="name headline">STM32第一部分学习——电机PID闭环控制</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Sue_syk</span><time itemprop="dateCreated datePublished" datetime="2023-08-31T16:00:13.000Z" title="发表于 2023-09-01 00:00:13">2023-09-01</time><time itemprop="dateCreated datePublished" datetime="2025-09-24T02:29:25.507Z" title="更新于 2025-09-24 10:29:25">2025-09-24</time></header><h1 id="十二、电机PID闭环控制"><a href="#十二、电机PID闭环控制" class="headerlink" title="十二、电机PID闭环控制"></a>十二、电机PID闭环控制</h1><h2 id="（1）实验效果展示"><a href="#（1）实验效果展示" class="headerlink" title="（1）实验效果展示"></a>（1）实验效果展示</h2><p>实验目的：电机速度闭环。</p>
+<p>实验效果：电机通过增量式PID算法稳定在规定转速上，并实时显示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=ODQ2OTM5ODU2ZWY5M2UwNzZlM2ZkOWYzNTAxMzhhYjBfUFdDNE5ydjZPVG4zaGFBUFg2TWp2SEF2a2g0UUJ1Z1BfVG9rZW46RDZLSmJVSDlVb1pZbUV4ZXQ1emNDcmU5bkdiXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=MzU5ZTRjZDgzZGJiNTU0OGJiM2EzMjNjZDQzMTgxNGZfUkFiNVNRWUROQWtjYUF4Ynh5c0JHMjRUWW5LUkRyMmJfVG9rZW46V2wwU2JTem1hbzgwU1V4ZmFXVWN5OU9XbnViXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>上面的意思是我规定让电机的速度是2r/s，那电机就一定是2r/s，误差在0.01以内。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=NmM4OWI0MTM5N2YxMTAyZmJlNDU0NGM3NWQxMzhmNDhfRFZERXFOY1dSYzRJeHhTd0pTV3pRdGJ0S0tvUzlMT3JfVG9rZW46Vk0zVGJ4anZvb1NXMWl4Z0hGUGNjMTdjbmRLXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>先看这次的主函数，四个定时器全用了：</p>
+<p>定时器1用来生成PWM控制电机</p>
+<p>定时器2生成0.1s的定时器中断PID计算</p>
+<p>定时器3生成0.1s的定时器中断电机编码器测速</p>
+<p>定时器4正交解码。</p>
+<p>其实定时器2和定时器3里的代码完全可以写一起，比如只用定时器2的中断，里面同时进行PID计算和编码器测速，定时器3省下不用，这样可以节省一个定时器资源，节约出来的这个定时器我们可以用来控制舵机、可以用来做计时用等。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=YmFkNmQ5ZDE5ZWIxNmQzNjk4ZTcxOWZlMmM0ZWZmNWNfakNXRnJJRVZ6R3dTV3dnUVQ5bkQ1N0xPUFljVGVuZXhfVG9rZW46TVhYS2I1QXVXb2I0bTF4SG82RGNNNTlwbjRlXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>上面是pid.c里的代码，初始化了很多参数，下面还有几个公式，看不懂。</p>
+<p>那么我们下面先来详细学习一下PID算法。</p>
+<h2 id="（2）PID算法的原理和用法"><a href="#（2）PID算法的原理和用法" class="headerlink" title="（2）PID算法的原理和用法"></a>（2）PID算法的原理和用法</h2><p>PID算法的百度百科官方解释：</p>
+<p>PID（Proportional-Integral-Derivative）（比例-积分-微分）算法是一种常用的反馈控制算法，广泛应用于自动控制系统中。它通过测量系统的误差（目标值与实际值之间的差异）来调整控制器的输出，以使系统的响应满足特定的要求。</p>
+<p>百度百科看不懂很正常，下面我来举例子：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM2MzljZDBkNWZiMDliZTlhM2U3MTdmYTIwZmYzOTNfTUptQWV5OXZqZkQ3YTZBdFlwOTNEYXlBRUxOMGNWZm1fVG9rZW46UlBzMGJzbkJUb2JtTzR4VlhGT2NyVjdqbnZlXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>上图是一个小人在控制阀门的开度，保持水管输出的流量稳定在5升每秒。</p>
+<p>如果没有任何外在因素，小人只需要调节一次，确保输出流量是5L/s，就不用再管了。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=OTUyYmZkM2VhMjlkNTlmNjEyOTQ4OGFhODFkYTI5YTdfT2FYRElwU2JXb1FlYkhOUzZQeUZKdTN5WnFwWmdxdEVfVG9rZW46SGlncWJacHBtb05HWlp4QnhKNmNaV3ZHbnNlXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>上图，小人吃完饭回来，管子内壁已经长了很多苔藓，堵住了部分水流，流量只有4.5L/s了，小人赶紧调节阀门；结果阀门一开大，把苔藓冲走了一大部分，流量一下成了5.5L/s了，小人更着急了，又把阀门调小；好不容易，流量又回归正常了。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=OTIzNmViYTYxMWE2NDcxYzk2NzQwMDc5YzgxMTlkZGRfeVFROE1DTXl3WjNyS1RUd2Y4NmNUUzJoU1ZGQVcwdFBfVG9rZW46WHMwOGJCcEtDb1NyajZ4cXdkZmM5OXVCbndlXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>上图，但是这样的突发事件越来越多，各种各样的外界因素让他一秒都闲不下来，它需要不断调节阀门才能保证输出是5L/s。</p>
+<p>这时，小人自己就是个控制器（STM32），小人的脑子里就已经装着PID算法了，这其实就是一个PID控制系统了。只不过小人不像STM32，它不能24小时检测+调节阀门，它会累死，但STM32不会累。</p>
+<p>终于有一天，小人崩溃了，他要寻求技术支持。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=YzE1YmNhMDIwMTJjYTlhMGY3ZmFjOGVmOWVhMTczOGJfQnJGS2NKRmxjc2pYVk8wOGd1VWlxbWJ4WVZyWjFaWkdfVG9rZW46VFg2cmJJY3FTbzF1aFN4ZTQ1UmNhZ2xZbmFkXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>小人定制了一套自动流量调节系统，由单片机控制器控制阀门自动调节流量，代替了小人来手动调节，并且在出水口处装了流量计，控制器自主观测流量大小，这样无论中途经历了什么干扰都不重要，最终输出一直都被控制在5L/s。</p>
+<p>所以这一节我们学的就是这套控制系统的搭建。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=MjQxOTk5NjZjOGQ5NTY3ODhkNTRhMmNkMzgxZjA4ZGZfS25nOTVhalRtZFl6UnFxRE1YN29sdURTQ3pVbmc3TTVfVG9rZW46V1lnN2JSNjRmb3lscGF4QzRKQWM4dTVDbnBiXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>我第一次知道PID算法是在b站看到一个两轮的平衡小车，小车只有两个轮子，为什么能立住不倒呢？</p>
+<p>经过了解我发现，平衡小车上有一个传感器叫做“陀螺仪”，它可以检测小车实时的俯仰角。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=N2JkZmNiMzMwNjczYzQxNzQ2MjZjM2MyMzNjZmIxOWNfNFQ4OVppQndobzVoWTlHRWVMWWxPZW5Oblh1VXFYTVhfVG9rZW46WEtabmJ2dGZTb2lJVG54M2FPcWNaeUtHbkpoXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>上图绿色的标注就是飞机的俯仰角（pitch），俯仰角<0°则飞机俯冲，俯仰角>0°则飞机后仰爬升。所以正常的飞行状态就是俯仰角始终保持在0°。平衡小车跟这个是完全一样的，需要将俯仰角保持在0°。</p>
+<p>陀螺仪传感器把俯仰角数据传给单片机，然后单片机将数据带入到PID算法中，经过PID运算之后，将运算结果用于控制PWM占空比，进而控制平衡小车的电机运动来修正俯仰角。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=NWNkY2VlZWMxMTMyZDYzZGFhYWEzMzVhNmZkMTU5NzVfSGlrTGFxeDNvSEFEbkFnZGkwOElXMW8wTGxCb3QzZ2hfVG9rZW46UVE3eGJTRm9lbzl0cG14MTFzZGNYMlJYbnJoXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>与上图举的小人控制水流的例子不同，上图系统的主控制器是小人，小人是肉身凡胎，人类的极限也不过是每秒检查一次水流并调节一次阀门；而单片机中的PID算法执行周期非常短，STM32可以做到0.001秒执行一次观测流量并调节阀门，从而可以非常高效不断运行，对平衡小车来说，以每秒一千次的调节速度不断纠正当前的俯仰角，使其一直保持在0°，小车就能在两个轮子不断调节下立住不倒了。</p>
+<p>PID控制就是非常典型的反馈控制。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=MTk3NWQwODRjZWMzOTU2M2ZjM2NmMjgyOWQwNjc2OTJfQnFkQ21keXdWMnYyWktQNEpUenI3WUh3cWk3MTg1WlVfVG9rZW46VEFlZmJCR3RDb2EydVR4c1RaRWNuaUJIblJmXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>什么是反馈控制？高中生物应该是学过，温度高了下丘脑就会发出激素让人出汗，降温散热，温度低了下丘脑就会发出另一种激素让人打冷战，维持体温。</p>
+<p>pid这里一模一样，我们看上图，还是以平衡小车为例，传感器就是陀螺仪，执行器就是电机，每次修正后的俯仰角都会反馈给传感器，再作为输入参数，周而复始进行不断的调节，这就是反馈控制。</p>
+<p>另外上图这一个流程图是一个封闭的环状流程，所以PID控制又是一种闭环控制。那什么是开环控制呢？我举个例子，五路红外循迹小车就是闭环控制，因为它寻迹的传感器就是红外寻迹模块，执行器就是电机，符合上面的框图，所以可以使用单片机内部的PID算法自动进行巡线；</p>
+<p>而遥控小车就是开环控制，用遥控杆手动控制小车也能完成巡线，但是因为遥控小车没有巡线的传感器，只有执行器也就是电机，小车完全由手动操控，无法自主巡线。</p>
+<p>再举个例子，比如这一节实验的现象是电机通过pid算法自稳定在2r/s旋转，编码器作为速度传感器，实时反馈速度信息，这就是闭环控制。</p>
+<p>那假如我不用pid控制，就只输出固定的pwm占空比也想达到2r/s，我就需要反复调试占空比大小，直到调节到2r/s为止，这就是开环控制。</p>
+<p>再举个例子，假如我们洗澡的时候水温控制器是PID自动控制，那洗澡水只需要打开水龙头就一直稳定在37度，不需要我们手动调节，这就是闭环控制；如果是机械调节水温，那我们就要手动多次调节热/冷开关，直到水温合适为止，这就是开环控制。</p>
+<h2 id="（3）比例项P"><a href="#（3）比例项P" class="headerlink" title="（3）比例项P"></a>（3）比例项P</h2><p>首先我们上一个极简PID公式（总要学点理论的，不要排斥公式，充分理解下面公式花不了你多少时间，还能帮你更好实操）。</p>
+<p>PID（位置式）最容易理解的公式：</p>
+<script type="math/tex; mode=display">u = P*e + I*\int e  + D*\mathop e\limits^ \bullet</script><p>首先不要怕，这个算法非常简单：</p>
+<p>PID算法，当然就有三个核心参数：P、I、D。</p>
+<p>而且P、I、D三个参数是确定不变的：也就是在自动控制中，这三个参数最初设定是多少就永远是多少；</p>
+<p>上式中，u就是output，输出值；</p>
+<p>e就是error，误差值，作为输入。</p>
+<p>我们把三个参数拆开看，先分析P，令I和D都为0，公式就变成了：</p>
+<script type="math/tex; mode=display">u = P*</script><p>P是比例系数，剩下的这个公式就是纯P控制，也就是纯比例控制，对这个公式的粗俗的理解就是：面多了加水，水多了加面，不断调节。</p>
+<p>下面开始举例子：</p>
+<p>下图是一个会漏水的水缸，目前里面水位为0：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=N2MwYjc1MmI0MGRmNjBjNzZjNDQ4MzliZjY0ZjU5YjFfcDhRZFc5NVQ3SlJ3dXJCTkttanVpaVV4N3Y3a05nUEJfVG9rZW46T0dOWWJIMGtFb3dwWlV4WUxEVGNSUDJsbmNkXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>要求：</p>
+<p>每秒一次加/排水目标是缸的水位稳定在10cm水多了就排，水少了就加但是水缸会漏水，每秒水位下降0.2~2.2cm<strong>不定</strong>。加水按照纯P控制算法。</p>
+<p>为了方便计算，我们把原第四条要求修改一下：</p>
+<p>但是水缸会漏水，每秒水位固定下降0.2cm。</p>
+<p>按照纯P控制算法，首先，设置P的参数：设P=0.5 </p>
+<p>第一次加水：err=理想-现实=10-0=10，所以u=e<em>P=10</em>0.5=5，根据计算结果，把水位加到5cm，漏水0.2cm，5-0.2=4.8cm。所以第一次加水就变成了下图这样：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=N2E1MTZhNDgzYjVlNTVhOGU3ZmE4YzIwZTgzNjY4OWNfSjBsTlo5cDcweFo1QmhUeTVWQzRKUGRZVHh4NVlaajVfVG9rZW46TDJaemIwVVBVb3pjQWJ4UllzRmNoeUlJblNpXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>第二次加水，u=e<em>P=5.2</em>0.5=2.6，漏0.2就加2.4cm，就是下面这样：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=MDQxNzQ2MWE4NzE4NGJjZDZmMWI5Yzg2NjczZTg0NmVfeEZHbTZxY0xPWnZZc1RqSFNJWk5kTUNHYmJMcFJCemxfVG9rZW46S2dTVmJXU2xwb00zRTF4R0l3YWNENnNablpjXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>误差进一步减小。</p>
+<p>第三次加水：u= e<em>P=2.8</em>0.5=1.4，漏0.2就加1.2cm的水：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=MGZlZGNjZmMyNzNiNmI2OTEyMTcyNmEwOGIzMGYyN2RfbldLd3lBdWdydGtnTEZMSWFYZFJzVDdLY3BFSGVpU0JfVG9rZW46UE5ZY2Jva3JIb3JwSnh4TDJiT2NQdzNSbnBoXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>所以，第四次、第五次… …第n次加水，我们如果真的算一算，会发现得到水位的变化曲线如下手绘图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=OGE3MTc5ZmFlMjdiMWIxZGI3ZDFjMzlmMzg5YzVmMGZfOE5BVHlDYmVGWDdSYUhEOTBtcUtQSFhqdXJRbHlJRXpfVG9rZW46WTN6d2IxZkdxbzU2QUV4aUNGemNUdTM2bkZmXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>我们发现随着纯P控制的不断修正，水位会无限接近于9.6cm，但是永远不会到达10cm。</p>
+<p>因为，假设现在水位是9.6cm，err=0.4，e<em>P-0.2=0.4</em>0.5-0.2=<strong>0</strong></p>
+<p>不增不减。</p>
+<p>所以，当时间趋近于无穷大时，水位就一直在9.6cm，此时的误差err=0.4就是静态误差。</p>
+<p>我们再重新分析，这次让P=2.5，还是每秒漏水0.2cm。</p>
+<p>第一次加水，e<em>P-0.2=10</em>2.5-0.2=24.8，当前水位24.8cm</p>
+<p>第二次加水，e<em>P-0.2=-14.8</em>2.5-0.2=-37.2，当前水位24.8-37.2&lt;0，0cm</p>
+<p>第三次加水，e<em>P-0.2=10</em>2.5-0.2=24.8，当前水位24.8cm</p>
+<p>第四次加水，e<em>P-0.2=-14.8</em>2.5-0.2=-37.2，当前水位24.8-37.2&lt;0，0cm</p>
+<p>这就很搞笑了。这说明P值不可以取过大，P超过一定的值之后这个系统就不再稳定了，也就是不收敛了。这算法要是真应用上，不知道要浪费多少水hhh。</p>
+<p>我们再重新分析，降低P值，这次取P=1.5，还是每秒漏水0.2cm。</p>
+<p>第一次加水，e<em>P-0.2=10</em>1.5-0.2=14.8，当前水位14.8cm</p>
+<p>第二次加水，e<em>P-0.2=-4.8</em>1.5-0.2=-7.4，当前水位14.8-7.4=7.4cm</p>
+<p>第三次加水，e<em>P-0.2=2.6</em>1.5-0.2=3.7，当前水位7.4+3.7=11.1cm</p>
+<p>第四次加水，e<em>P-0.2=-1.1</em>1.5-0.2=-1.85，当前水位11.1-1.85=9.25cm</p>
+<p>第五次加水，e<em>P-0.2=0.75</em>1.5-0.2=0.925，当前水位9.25+0.925=10.175cm</p>
+<p>第六次加水，e<em>P-0.2=-0.175</em>1.5-0.2=-0.4625，当前水位10.175-0.4625=9.7125cm</p>
+<p>第七次加水，e<em>P-0.2=0.2875</em>1.5-0.2=0.23125，当前水位9.7125+0.23125=9.94375cm</p>
+<p>第八次加水，e*P-0.2=-0.11，注意计算到这里！我们就发现了，好像还是不能加满…</p>
+<p>我们发现随着加水次数的增加，水位变化大致如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=OWIyMzE2MDk3NGVkMjQ4NjdmM2E0MWUyMzU4ZTE4NmFfM1VQZlZNQWhnWVhLWENyOHlJeEVJYzdJWGdoOFdaRGtfVG9rZW46VDRLeGIyUlNCbzc4aEp4VHN5QmNxWnU0bnFjXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>一段时间后，水接近10cm，但还是跟第一次一样，还是永远到达不了10cm，有无法消除的静态误差。</p>
+<p>第三次P=1.5的纯P控制还有其他缺点，比如超调过大：</p>
+<p>尤其是第一次加水，加水量会超过标准水位很多，也就是图像会有一个很大的波动，这个波动值如下图，称为超调量。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=NDFmMTc1N2MwNzJkNDA0ZTVjNTlhNzg1NzU2ZjUxZDJfcEJ5MlYwQUpiakJhczg4U2psS0xZdDhVZVZBcmtsUWpfVG9rZW46RDcxbGI0Z3dZbzFoekF4VDR1eWM4R1lTblhPXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>这个超调量（简称超调）是不利于稳定控制的，我们要让它尽量小。</p>
+<p>那有什么办法呢，如果P太小会让水位达到目标值过慢，如果太大会系统失稳，取正好的话需要多次尝试，而且每秒固定漏水0.2cm是理想情况，真实情况是漏水在0.2cm~2.2cm不等，最小漏水量是0.2cm，也就是这个静态误差会一直存在，以及其他外界不确定性影响，控制效果也会跟着变。</p>
+<p>纯P控制介绍完了，总结一下：</p>
+<p>比例控制P越大，接近目标值的速度越快，但是提升控制速度的代价是超调和震荡会随着P的增大而增大；P过大会使系统失稳。</p>
+<h2 id="（4）微分项D"><a href="#（4）微分项D" class="headerlink" title="（4）微分项D"></a>（4）微分项D</h2><p>这时候就要引入D了，微分：</p>
+<script type="math/tex; mode=display">u = P*e + D*\mathop e\limits^ \bullet</script><p>e上加一个点代表是e的微分。微分离散化之后就是e-e_last，e是这一次的误差，e_last是上一次的误差，于是公式就变成了：</p>
+<script type="math/tex; mode=display">u = P*e + D*(e - {e_{last}}) = P*e + D*\Delta</script><p>为什么要离散化？因为单片机运行是离散执行的，一句代码可能1微秒执行一次，性能更好的单片机可能0.1微秒执行一次，但时间间隔终究是离散的，不是连续的，所以我们也要将公式离散化去适应单片机的离散系统。</p>
+<p>我们取P=0.5，D=0.2，得到下表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>次数/参数</th>
+<th>P=0.5 D=0.2</th>
+<th>P=0.5 D=0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>e=10，e_last=10当前水位5</td>
+<td>e=10当前水位5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>e=5，e_last=10当前水位6.5</td>
+<td>e=5当前水位7.5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>e=3.5，e_last=5当前水位7.95</td>
+<td>e=2.5当前水位8.75</td>
+</tr>
+<tr>
+<td>4</td>
+<td>e=2.05，e_last=3.5当前水位8.685</td>
+<td>e=1.25当前水位9.375</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>可以看到有D项控制的水位上升更平缓，所以D项就相当于一个阻尼项，可以让控制更加平缓，不会有过猛过冲的情况，同理，D项最重要的作用就是消除超调量，如下图：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=OWVjZGFmNzNjMWJhZmY4ZmZlOTRiNzBmMzY5YjEyNTBfcHVtRWN6MmFGVHZibVBwZmpBNm5oaDFoUzhzeWJZejVfVG9rZW46R0tHQWIyYms1b0hSVXZ4Z3o3VWNXekdZbkNjXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></th>
+<th><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=OWEyNzI3Zjk0ODA4YjljMGM1ZWYxMjZhZTQ0Njk1N2VfTEF2eUpERWFSbnRyQlpDVThoWXludkh5S1BVRDlnTENfVG9rZW46UVFoa2JIRUVRb3lNVEh4eUNHa2NuVDREbmQzXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>（a）加入D项前</td>
+<td>（b）加入D项后</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>微分控制效果手绘图</p>
+<p>PD控制中，D项作为阻尼项可以有效消除超调量。</p>
+<p>现在看起来控制效果已经非常好了吧，快速性，稳定性都有了，P解决快速性，D解决稳定性。</p>
+<p>但我们忘了前面一直提的一个误差：静态误差。</p>
+<p>也就是现在还没有准确性，可以看到实际值一直离目标值差一点点，怎么办？</p>
+<h2 id="（5）积分项I"><a href="#（5）积分项I" class="headerlink" title="（5）积分项I"></a>（5）积分项I</h2><script type="math/tex; mode=display">u = P*e + I*\int e  + D*\mathop e\limits^ \bullet</script><p>积分项I就是专门来消除静态误差的，加入积分项，PID就全了。</p>
+<p>跟前面一样，把公式离散化：</p>
+<script type="math/tex; mode=display">u = P*e + I*\sum e + D*\Delta e</script><p>其中就是自始至终所有误差的累加。</p>
+<p>原先0.2cm每秒的漏水，静态误差始终无法解决，但是有了积分项之后，把每次静态误差累积，随着累积的增多，积分项的作用会越来越明显，增大注水量，从而消除这个静态误差。</p>
+<p>最后的效果如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://vcnxmjs0vohu.feishu.cn/space/api/box/stream/download/asynccode/?code=NGQ5OGFmMzRmODFlZGFhYjk4YzUyZWU3YTU1ZjNkNzJfMmFZSTFFaFJMbkdhV2VZN0ZuWnJEZHhTbGZoQkhRN0VfVG9rZW46UWtKV2JUUUN3b2FKeTl4RXplcWNsM3BYbkFjXzE3NTg2ODA2ODQ6MTc1ODY4NDI4NF9WNA" alt="img"></p>
+<p>静态误差被消除了，快速性、稳定性、准确性兼备。</p>
+<p><strong>但是积分项I过大也会引起超调增大以及失稳，而且I过大会导致系统滞后，也就是调节效果慢半拍，降低系统快速性。</strong></p>
+<h2 id="（6）位置式PID和增量式PID"><a href="#（6）位置式PID和增量式PID" class="headerlink" title="（6）位置式PID和增量式PID"></a>（6）位置式PID和增量式PID</h2><script type="math/tex; mode=display">u = P*e + I*\int e  + D*\mathop e\limits^ \bullet</script><p>刚刚我们讲的PID公式就是位置式PID，上面的这个公式就是连续的PID公式，下面我们要把它离散化，去适应单片机的离散系统。</p>
+<p>现在我们上难度，把公式写得标准一点，离散位置式PID公式：</p>
+<script type="math/tex; mode=display">u(k) = P*e(k) + I*\sum\limits_{i = 1}^k {e(i)}  + D*[e(k) - e(k - 1)</script><p>这是本节最核心的公式没有之一，我们其实是最常用位置式PID也就是没有任何变种的基础PID算法！</p>
+<p>K代表第k次PID调节，u(k)就是本次的输出值。这个公式本质跟上面的连续PID公式是完全一样的，可以自己仔细去揣摩一下这个公式。</p>
+<p>那什么是增量式PID呢？</p>
+<p>增量的意思就是本次输出量和上次输出量的差值，比如第k次PID：</p>
+<script type="math/tex; mode=display">u(k) = P*e(k) + I*\sum\limits_{i = 1}^k {e(i)}  + D*[e(k) - e(k - 1)</script><p>那上次就是k-1次PID：</p>
+<script type="math/tex; mode=display">u(k - 1) = P*e(k - 1) + I*\sum\limits_{i = 1}^{k - 1} {e(i)}  + D*[e(k - 1) - e(k - 2)</script><p>两式一减就是增量式：</p>
+<script type="math/tex; mode=display">\Delta u(k) = u(k) - u(k - 1</script><script type="math/tex; mode=display">\Delta u(k) = P*[e(k) - e(k - 1)] + I*e(k) + D*[e(k) - 2*e(k - 1) + e(k - 2)</script><p><strong>注：有数学恐惧的同学一定要硬着头皮看懂这几个公式，这是最简单的算法了，讲得也够详细，拿这个做一次理解训练，以后才能有算法的提升。</strong></p>
+<p>△u(k)是输出值的增量，也就是上一次的输出值加上△u(k)就是这一次的输出值。</p>
+<p>这样增量式PID就只需要记录前两次的误差，而不用记录从头到尾的累积误差。</p>
+<p>所以这两种PID公式有什么区别吗？我们应该怎么选择合适的？</p>
+<p>说一下两种PID的应用场合：</p>
+<p>（1）位置式PID控制器适用于需要快速响应和精确控制的场景。比如，在电机控制中，需要控制电机的转速或位置，使其能够快速响应并准确控制，这时可以使用位置式PID控制器。又如，在温度控制中，需要控制温度的精度和稳定性，这时也可以使用位置式PID控制器，同时位置式PID中，I项是会产生滞后，增加准确性的作用，为了系统的快速性，有可能I项直接不用，只用PD控制。</p>
+<p>（2）增量式PID控制器适用于需要较强稳定性和对测量噪声较高的场景。比如，在机器人控制中，需要控制机器人的运动轨迹，这时可以使用增量式PID控制器，因为机器人在运动过程中，往往受到各种干扰，如摩擦力、惯性力等，增量式PID控制器对这些干扰有较强的稳定性；又如，在液位控制中，需要控制液位的高度和稳定性，这时也可以使用增量式PID控制器，因为在液位测量中，测量信号通常存在一定的噪声和波动，增量式PID控制器可以较好地抵抗这些干扰。</p>
+<p>最后给出代码。首先是位置式PID：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pid.h&quot;</span></span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> err_last=<span class="number">0</span>;                <span class="comment">//上次的误差</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> err=<span class="number">0</span>;                        <span class="comment">//本次的误差</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> Integral_err=<span class="number">0</span>;    <span class="comment">//累计的误差</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> P=<span class="number">0</span>;<span class="comment">//         //P</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> I=<span class="number">0</span>;<span class="comment">//           //I</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> D=<span class="number">0</span>;<span class="comment">//         //D</span></span><br><span class="line"><span class="type">float</span> a_m=<span class="number">0.0</span>;                            <span class="comment">//输出值</span></span><br><span class="line"><span class="type">float</span> <span class="title function_">pid_control</span><span class="params">(<span class="type">float</span> speed)</span></span><br><span class="line"> &#123;     </span><br><span class="line">    err=(aim_v - now_v);           <span class="comment">//获得本次误差</span></span><br><span class="line">    Integral_err += err;             <span class="comment">//获得累加误差</span></span><br><span class="line">    a_m = P * err + I * Integral_err + D * (err - err_last); <span class="comment">//位置式PID公式</span></span><br><span class="line">    a_m = a_m&lt;<span class="number">10000</span>?a_m:<span class="number">10000</span>;   <span class="comment">//对输出值进行限幅</span></span><br><span class="line">    a_m = a_m&gt;<span class="number">-10000</span>?a_m:<span class="number">-10000</span>;</span><br><span class="line">    <span class="keyword">return</span> a_m;                       <span class="comment">//输出a_m</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>相比之前讲的理论模型，实际的代码多了红色字体的输出限幅，这一点是非常有必要的，因为PID三个参数是要多次调试才能逐渐达到理想控制效果，如果刚开始调试效果不好导致系统失稳，如果没有输出限幅，就会对系统造成毁灭性打击。</p>
+<p>增量式PID代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pid.h&quot;</span></span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> err_last_last=<span class="number">0</span>;      <span class="comment">//上上次的误差</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> err_last=<span class="number">0</span>;          <span class="comment">//上次的误差</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> err=<span class="number">0</span>;                  <span class="comment">//本次的误差</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> P=<span class="number">0</span>;             <span class="comment">//参数P</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> I=<span class="number">0</span>;              <span class="comment">//参数I</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> D=<span class="number">0</span>;            <span class="comment">//参数D</span></span><br><span class="line"><span class="type">static</span> <span class="type">float</span> off_cal = <span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> a_m=<span class="number">0.0</span>;                      <span class="comment">//输出值</span></span><br><span class="line"><span class="type">float</span> <span class="title function_">pid_control</span><span class="params">(<span class="type">float</span> speed)</span></span><br><span class="line"> &#123;     </span><br><span class="line">    err_last_last=err_last;       <span class="comment">//更新上上次的误差</span></span><br><span class="line">    err_last=err;                   <span class="comment">//更新上次的误差</span></span><br><span class="line">    err=(aim_v - now_v);             <span class="comment">//更新本次误差</span></span><br><span class="line">    off_cal = P * (err - err_last) + I * err + D * (err + err_last_last - <span class="number">2</span> * err_last); <span class="comment">//增量式PID的公式</span></span><br><span class="line">    a_m+= off_cal;                    <span class="comment">//得到输出值</span></span><br><span class="line">    a_m = a_m&lt;<span class="number">10000</span>?a_m:<span class="number">10000</span>;     <span class="comment">//对输出值进行限幅</span></span><br><span class="line">    a_m = a_m&gt;<span class="number">-10000</span>?a_m:<span class="number">-10000</span>;</span><br><span class="line">    <span class="keyword">return</span> a_m;                        <span class="comment">//输出a_m</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>注意到不同了么，位置式的PID输出值就是输出值，但是增量式PID的输出值是上一次输出值的增量。</p>
+<h2 id="（7）电机速度闭环控制及调参方法"><a href="#（7）电机速度闭环控制及调参方法" class="headerlink" title="（7）电机速度闭环控制及调参方法"></a>（7）电机速度闭环控制及调参方法</h2><p>铺垫了这么多，终于要进入正题了，搞我们的电机速度闭环。</p>
+<p>请先下载代码 ，然后通读所有代码，理解PID算法的参数获取的流程是怎样进行的，以及电机的pwm控制，是对前几节内容的复习。</p>
+<p>速度闭环我们使用的是增量式PID，因为我们需要的是更稳定的控制效果，使速度稳定在预定的2r/s，而不是快速灵活的控制效果。</p>
+<p>烧录代码后电机应该已经可以稳定在2r/s，因为PID参数我已经调试好了。</p>
+<p>那么你在调试的时候应该怎么调参呢？</p>
+<p>把P、I、D三个参数都调成0先调P，P从0开始缓慢增大，比如先让P=0.1，观察速度变化，一旦电机一上电，速度超过了目标值，比如2.5r/s，说明有超调了，这时候快速性已经没问题了。然后慢慢增大D，增加阻尼，减小超调，稍微增大D，观察速度变化，让电机上电后快速稳定在2r/s，即参数调试完成。速度闭环控制中，积分项I的作用不大，因为我发现并没有静态误差，就没有调积分项。</p>
+<p>网上还有很多PID的快速调参方法，比如在线调参软件呀，还能在电脑上画图呀，电脑画图需要我们学串口通信，也就是第三章第一节的uart才可以，这一节我们观测速度全靠oled屏的这个数值，看不到实际速度变化曲线，其实有点难受，但是这样也让我们早一点接触到了PID算法，并且PID算法会作为平衡小车的核心算法，而调平衡小车PID的时候是不需要电脑绘图就能调好的，不必担心。</p>
+<p>比如平衡小车的直立环PID，跟这个电机速度环是几乎完全一样的：</p>
+<p>电机速度环是增量式PID，更追求稳定；</p>
+<p>平衡车直立环是位置式PID，更追求快速；</p>
+<p>电机速度环输入的是速度误差；</p>
+<p>平衡车直立环输入的是俯仰角误差；</p>
+<p>电机速度环目标速度值是2r/s（只是本次实验）；</p>
+<p>平衡车直立环目标角度值是0°（小车水平）；</p>
+<p>综上，调参方法和算法框架都是几乎一致的。</p>
+<p>本节课的两个练习题：</p>
+<ol>
+<li>仿照电机速度闭环代码，修改为电机的位置闭环；</li>
+</ol>
+<p>提示：比如让电机转轴停留在一个固定位置，或者每秒转轴转动45°，像舵机那样子。应该选用位置式PID，因为电机目标位置要时刻变化，追求快速性灵活性。</p>
+<ol>
+<li>仿照电机速度闭环代码和之前的红外寻迹代码，修改为寻迹小车的PID寻迹。</li>
+</ol>
+<p>提示：红外寻迹传感器不会直接传回误差信息，就像编码器实质是测位置，不是测速一样，寻迹的误差值生成已经在track.c中的track_scan函数完成了，请尝试把PID代码复制过去完成位置式PID寻迹（因为寻迹要求快速性强）。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s21.ax1x.com/2025/08/19/pVBwAoT.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s21.ax1x.com/2025/08/19/pVBwAoT.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Sue_syk</div><div class="post-copyright__author_desc">Blog</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2023/09/01/lesson-1-13/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2023/09/01/lesson-1-13/')">STM32第一部分学习——电机PID闭环控制</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title=" 联系作者"><i class="anzhiyufont anzhiyu-icon-thumbs-up"></i> 联系作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">生活明朗 万物可爱</span><ul class="reward-group"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/qq.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/qq.jpg" alt="QQ"/></a><div class="post-qr-code-desc">QQ</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">Sue_syk </div><div class="reward-dec">Do my utmost to change the world.</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2023/09/01/lesson-1-13/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=STM32第一部分学习——电机PID闭环控制&amp;url=http://example.com/2023/09/01/lesson-1-13/&amp;pic=https://s21.ax1x.com/2025/08/19/pVBdbLt.jpg?_r_=65768bf0-126e-49ce-69b0-302ceb902227" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Sue_syk</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>学习手册<span class="tagsPageCount">13</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://s21.ax1x.com/2025/08/19/pVBdbLt.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/01/lesson-1-12/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s21.ax1x.com/2025/08/19/pVBdozd.jpg?_r_=e44a9404-ba9f-384a-eb19-336ac85ba354" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">STM32第一部分学习——电机编码器测速</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/01/3D/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/3Dshow.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">3Dshow</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2023/09/01/lesson-1-1/" title="STM32第一部分学习——跑马灯"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2025/09/12/cc4a039994e1c9cf.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-09-01</div><div class="title">STM32第一部分学习——跑马灯</div></div></a></div><div><a href="/2023/09/01/lesson-1-2/" title="STM32第一部分学习——按键"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2025/09/16/c36dbee3023c4792.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-09-01</div><div class="title">STM32第一部分学习——按键</div></div></a></div><div><a href="/2023/09/01/lesson-1-12/" title="STM32第一部分学习——电机编码器测速"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s21.ax1x.com/2025/08/19/pVBdozd.jpg?_r_=e44a9404-ba9f-384a-eb19-336ac85ba354" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-09-01</div><div class="title">STM32第一部分学习——电机编码器测速</div></div></a></div><div><a href="/2023/09/01/lesson-1-10/" title="STM32第一部分学习——超声波测距&amp;定时器计时"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2025/09/24/49e72c60571298b1.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-09-01</div><div class="title">STM32第一部分学习——超声波测距&amp;定时器计时</div></div></a></div><div><a href="/2023/09/01/lesson-1-6/" title="STM32第一部分学习——PWM控制舵机"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2025/09/20/b0cd3fca3b400187.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-09-01</div><div class="title">STM32第一部分学习——PWM控制舵机</div></div></a></div><div><a href="/2023/09/01/lesson-1-5/" title="STM32第一部分学习——（补）STM32标准库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2025/09/19/2ebc3441f63c13fc.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-09-01</div><div class="title">STM32第一部分学习——（补）STM32标准库</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" style="display: none">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s21.ax1x.com/2025/08/19/pVBwAoT.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><b style="color:#fff">Do my utmost to change the world.</b></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">Sue_syk</h1><div class="author-info__desc">Blog</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/Suesyk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/650969347" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="social-icon faa-parent animated-hover" href="https://steamcommunity.com/profiles/76561199408768193/" target="_blank" title="Steam"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-steam1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:Samuel.syk@aliyun.com" target="_blank" title="Mail"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E7%94%B5%E6%9C%BAPID%E9%97%AD%E7%8E%AF%E6%8E%A7%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">十二、电机PID闭环控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%9E%E9%AA%8C%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">1.1.</span> <span class="toc-text">（1）实验效果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89PID%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">（2）PID算法的原理和用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E6%AF%94%E4%BE%8B%E9%A1%B9P"><span class="toc-number">1.3.</span> <span class="toc-text">（3）比例项P</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%BE%AE%E5%88%86%E9%A1%B9D"><span class="toc-number">1.4.</span> <span class="toc-text">（4）微分项D</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%885%EF%BC%89%E7%A7%AF%E5%88%86%E9%A1%B9I"><span class="toc-number">1.5.</span> <span class="toc-text">（5）积分项I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%886%EF%BC%89%E4%BD%8D%E7%BD%AE%E5%BC%8FPID%E5%92%8C%E5%A2%9E%E9%87%8F%E5%BC%8FPID"><span class="toc-number">1.6.</span> <span class="toc-text">（6）位置式PID和增量式PID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%887%EF%BC%89%E7%94%B5%E6%9C%BA%E9%80%9F%E5%BA%A6%E9%97%AD%E7%8E%AF%E6%8E%A7%E5%88%B6%E5%8F%8A%E8%B0%83%E5%8F%82%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">（7）电机速度闭环控制及调参方法</span></a></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:Samuel.syk@aliyun.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/5513835872" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199408768193/" title="steam"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-steam1"></use></svg></a><a class="deal_link" href="/atom.xml" title="小红书"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xiaohongshu1"></use></svg></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s21.ax1x.com/2025/08/19/pVBwAoT.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/Suesyk" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/650969347" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAwGvugCnHMIiaHt_hqxloPXm8Q2ZAKP0C0Qfqb2U_adw?from_tab_name=main" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="workboard"><div id="runtimeTextTip"></div></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">文章</div><div class="footer-links"><a class="footer-item" title="随便逛逛" href="javascript:toRandomPost()">随便逛逛</a><a class="footer-item" title="时间轴" href="/archives/">时间轴</a><a class="footer-item" title="分类" href="/categories/">分类</a><a class="footer-item" title="标签" href="/tags/">标签</a></div></div><div class="footer-group"><div class="footer-title">生活</div><div class="footer-links"><a class="footer-item" title="音乐" href="/music/">音乐</a><a class="footer-item" title="相册" href="/album/">相册</a><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="追番" href="/bangumis/">追番</a></div></div><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="考研规划" target="_blank" rel="noopener" href="https://suesyk.github.io/guihua/guihua.html">考研规划</a><a class="footer-item" title="自习室" target="_blank" rel="noopener" href="https://suesyk.github.io/guihua/study.html">自习室</a><a class="footer-item" title="测速" target="_blank" rel="noopener" href="https://test.ustc.edu.cn/">测速</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2022 - 2025 By <a class="footer-bar-link" href="/" title="Sue_syk" target="_blank">Sue_syk</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = ["生活明朗&#44; 万物可爱&#44; 人间值得&#44; 未来可期."]
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="http://mail.st.nuc.edu.cn/" title="邮箱">邮箱</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://www.imgurl.org/vip/manage/upload" title="图床">图床</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="湘ICP备">湘ICP备</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">9</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">博客</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://suesyk.github.io/" title="主页"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="主页"/><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" href="javascript:toRandomPost()" title="随便逛逛"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="随便逛逛"/><span class="back-menu-item-text">随便逛逛</span></a><a class="back-menu-item" href="/archives/" title="时间轴"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="时间轴"/><span class="back-menu-item-text">时间轴</span></a><a class="back-menu-item" href="/essay/" title="即刻短文"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="即刻短文"/><span class="back-menu-item-text">即刻短文</span></a><a class="back-menu-item" href="/comments/" title="留言板"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/pico.webp" alt="留言板"/><span class="back-menu-item-text">留言板</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">服务</div><div class="back-menu-list"><a class="back-menu-item" href="/bangumis/" title="番剧"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wow.webp" alt="番剧"/><span class="back-menu-item-text">番剧</span></a><a class="back-menu-item" href="/music/" title="音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wow.webp" alt="音乐"/><span class="back-menu-item-text">音乐</span></a><a class="back-menu-item" href="/album/" title="相册"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wow.webp" alt="相册"/><span class="back-menu-item-text">相册</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">导航</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://suesyk.github.io/guihua/study.html" title="自习室"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/happy.webp" alt="自习室"/><span class="back-menu-item-text">自习室</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://suesyk.github.io/guihua/guihua.html" title="考研规划"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/happy.webp" alt="考研规划"/><span class="back-menu-item-text">考研规划</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://aidn.jp/mikutap/" title="放松一下"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/happy.webp" alt="放松一下"/><span class="back-menu-item-text">放松一下</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 统计</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/2024/10/01/daily/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 日记</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 藏宝阁</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/collect/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 足迹阁</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/project/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 待办录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 本站</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://readhub.cn/daily"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 每日早报</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于我</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3Dshow/" style="font-size: 0.88rem;">3Dshow<sup>1</sup></a><a href="/tags/github/" style="font-size: 0.88rem;">github<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" style="font-size: 0.88rem;">个人简历<sup>1</sup></a><a href="/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/" style="font-size: 0.88rem;">媒体报道<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" style="font-size: 0.88rem;">学习手册<sup>13</sup></a><a href="/tags/%E5%AD%A6%E6%9C%AF%E8%B5%84%E6%BA%90/" style="font-size: 0.88rem;">学术资源<sup>1</sup></a><a href="/tags/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/" style="font-size: 0.88rem;">毕设准备<sup>1</sup></a><a href="/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/" style="font-size: 0.88rem;">竞赛论文<sup>3</sup></a><a href="/tags/%E9%98%A1%E9%99%8C%E8%8C%B6%E6%97%85/" style="font-size: 0.88rem;">阡陌茶旅<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("09/01/2022 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2022 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Sue_syk 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("09/01/2022 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@10.2.4/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'mrZKX6jaSlkp3lzO9QByVF4H-MdYXbMMI',
+      appKey: 'y8a7GShDNX54oVeZEmbWvdYM',
+      avatar: 'mp',
+      serverURLs: 'https://mrzkx6ja.api.lncldglobal.com',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://mrzkx6ja.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'mrZKX6jaSlkp3lzO9QByVF4H-MdYXbMMI',
+        "X-LC-Key": 'y8a7GShDNX54oVeZEmbWvdYM',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4992423_pghft9frh9j.js?spm=a313x.manage_type_myprojects.i1.10.7c273a81WJoV4E&amp;file=font_4992423_pghft9frh9j.js"></script><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="I,LOVE,YOU" data-fontsize="20px" data-random="false" async="async"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = false
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'uN4bwNvqm8zGwaQZH'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"display":{"position":"right","width":100,"height":200},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
