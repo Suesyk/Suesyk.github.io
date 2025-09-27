@@ -416,7 +416,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/</loc>
+    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
     <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -430,7 +430,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
+    <loc>http://example.com/tags/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/</loc>
     <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -444,7 +444,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
+    <loc>http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
     <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -481,7 +481,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/</loc>
+    <loc>http://example.com/categories/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
     <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -495,7 +495,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
+    <loc>http://example.com/categories/%E7%AB%9E%E8%B5%9B%E8%AE%BA%E6%96%87/</loc>
     <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -509,7 +509,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
+    <loc>http://example.com/categories/%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
     <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
