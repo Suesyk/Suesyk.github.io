@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>基于深度学习的气体传感器零点漂移补偿研究</title>
+      <link href="/2026/01/01/CNN-LSTM/"/>
+      <url>/2026/01/01/CNN-LSTM/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><p><a href="https://archive.ics.uci.edu/dataset/224/gas+sensor+array+drift+dataset">https://archive.ics.uci.edu/dataset/224/gas+sensor+array+drift+dataset</a></p><p><a href="https://archive.ics.uci.edu/dataset/270/gas+sensor+array+drift+dataset+at+different+concentrations">https://archive.ics.uci.edu/dataset/270/gas+sensor+array+drift+dataset+at+different+concentrations</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CNN-LSTM </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CNN-LSTM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>个人简历</title>
       <link href="/2025/09/01/resume/"/>
       <url>/2025/09/01/resume/</url>
