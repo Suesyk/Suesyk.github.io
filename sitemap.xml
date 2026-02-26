@@ -452,7 +452,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/img/achievement/1.html</loc>
+    <loc>http://example.com/img/SUN/1.html</loc>
     
     <lastmod>2025-08-04</lastmod>
     
@@ -461,7 +461,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/img/SUN/1.html</loc>
+    <loc>http://example.com/img/achievement/1.html</loc>
     
     <lastmod>2025-08-04</lastmod>
     
@@ -479,6 +479,13 @@
 
   
   <url>
+    <loc>http://example.com/tags/CNN-LSTM/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/3Dshow/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -486,14 +493,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/CNN-LSTM/</loc>
+    <loc>http://example.com/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -507,7 +507,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
+    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -551,6 +551,13 @@
 
   
   <url>
+    <loc>http://example.com/categories/CNN-LSTM/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/categories/3Dshow/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -558,14 +565,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/CNN-LSTM/</loc>
+    <loc>http://example.com/categories/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -579,7 +579,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E5%AA%92%E4%BD%93%E6%8A%A5%E9%81%93/</loc>
+    <loc>http://example.com/categories/%E6%AF%95%E8%AE%BE%E5%87%86%E5%A4%87/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
